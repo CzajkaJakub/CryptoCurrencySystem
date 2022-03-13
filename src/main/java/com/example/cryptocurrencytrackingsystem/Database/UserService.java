@@ -1,8 +1,8 @@
 package com.example.cryptocurrencytrackingsystem.Database;
 
-import com.example.portfolio.Database.DAOS.UserDAO;
-import com.example.portfolio.Database.DAOS.UserDaoImpl;
-import com.example.portfolio.entity.User;
+import com.example.cryptocurrencytrackingsystem.Database.DAOS.UserDAO;
+import com.example.cryptocurrencytrackingsystem.Database.DAOS.UserDaoImpl;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

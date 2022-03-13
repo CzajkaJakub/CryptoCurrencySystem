@@ -1,6 +1,6 @@
 package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
-import com.example.portfolio.entity.User;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

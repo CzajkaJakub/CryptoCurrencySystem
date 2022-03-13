@@ -1,6 +1,6 @@
 package com.example.cryptocurrencytrackingsystem.Database;
 
-import com.example.portfolio.entity.User;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
 
 import java.util.List;
 

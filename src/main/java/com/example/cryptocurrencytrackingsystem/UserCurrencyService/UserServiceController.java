@@ -1,8 +1,8 @@
 package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
 
 
-import com.example.portfolio.Database.UserServiceInterface;
-import com.example.portfolio.entity.User;
+import com.example.cryptocurrencytrackingsystem.Database.UserServiceInterface;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
