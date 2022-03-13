@@ -1,0 +1,252 @@
+body {
+	align-items: center;
+	background-color: #000;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "Poppins", sans-serif;
+
+}
+
+
+.form {
+	background-color: #15172b;
+	border-radius: 20px;
+	box-sizing: border-box;
+	height: 500px;
+	padding: 20px;
+	width: 320px;
+	z-index: 1;
+}
+
+.title {
+	color: #eee;
+	font-family: sans-serif;
+	font-size: 36px;
+	font-weight: 600;
+	margin-top: 0;
+}
+
+.subtitle {
+	color: #eee;
+	font-family: sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+.input-container {
+	height: 50px;
+	position: relative;
+	width: 100%;
+}
+
+.ic1 {
+	margin-top: 40px;
+}
+
+.ic2 {
+	margin-top: 30px;
+}
+
+.input {
+	background-color: #303245;
+	border-radius: 12px;
+	border: 0;
+	box-sizing: border-box;
+	color: #eee;
+	font-size: 18px;
+	height: 100%;
+	outline: 0;
+	padding: 4px 20px 0;
+	width: 100%;
+}
+
+.cut {
+	background-color: #15172b;
+	border-radius: 10px;
+	height: 20px;
+	left: 20px;
+	position: absolute;
+	top: -20px;
+	transform: translateY(0);
+	transition: transform 200ms;
+	width: 76px;
+}
+
+.cut-short {
+	width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+	transform: translateY(8px);
+}
+
+.placeholder {
+	color: #65657b;
+	font-family: sans-serif;
+	left: 20px;
+	line-height: 14px;
+	pointer-events: none;
+	position: absolute;
+	transform-origin: 0 50%;
+	transition: transform 200ms, color 200ms;
+	top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+	transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+	color: #808097;
+}
+
+.input:focus ~ .placeholder {
+	color: #dc2f55;
+}
+
+.submit {
+	background-color: #08d;
+	border-radius: 12px;
+	border: 0;
+	box-sizing: border-box;
+	color: #eee;
+	cursor: pointer;
+	font-size: 18px;
+	height: 50px;
+	margin-top: 38px;
+	// outline: 0;
+	text-align: center;
+	width: 100%;
+	box-shadow: 1px 2px 0.4em white;
+}
+
+.submit:active {
+	background-color: #06b;
+}
+
+.submit:hover {
+	box-shadow: 1px 2px 1em #ffffff;
+}
+
+
+@keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to {
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to {
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+@-moz-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to {
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+@-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to {
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+.background-container{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom: 0;
+	right: 0;
+}
+
+.stars {
+	background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+	z-index: 0;
+}
+
+.twinkling{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+	background-size: 1000px 1000px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+
+	-moz-animation:move-background 70s linear infinite;
+	-ms-animation:move-background 70s linear infinite;
+	-o-animation:move-background 70s linear infinite;
+	-webkit-animation:move-background 70s linear infinite;
+	animation:move-background 70s linear infinite;
+
+}
+
+.clouds{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+	background-size: 1000px 1000px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 3;
+
+	-moz-animation:move-background 150s linear infinite;
+	-ms-animation:move-background 150s linear infinite;
+	-o-animation:move-background 150s linear infinite;
+	-webkit-animation:move-background 150s linear infinite;
+	animation:move-background 150s linear infinite;
+}
+
+.loginError{
+	position: absolute;
+	color: #dc2e2e;
+	font-size: 13px;
+	top: -20px;
+	width: 100%;
+	padding: 0;
+	left: 0;
+	text-align: right;
+}
+
+
+img{
+	height: 70vh;
+	width:70vh;
+	position: absolute;
+	z-index: 3;
+	right: 20px;
+}
+
+
+
+
+
