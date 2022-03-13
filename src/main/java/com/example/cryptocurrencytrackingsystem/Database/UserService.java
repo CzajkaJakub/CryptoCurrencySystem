@@ -1,4 +1,4 @@
-package com.example.portfolio.Database;
+package com.example.cryptocurrencytrackingsystem.Database;
 
 import com.example.portfolio.Database.DAOS.UserDAO;
 import com.example.portfolio.Database.DAOS.UserDaoImpl;

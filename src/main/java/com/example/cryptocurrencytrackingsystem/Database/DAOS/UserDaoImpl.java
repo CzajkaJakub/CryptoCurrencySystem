@@ -1,4 +1,4 @@
-package com.example.portfolio.Database.DAOS;
+package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
 import com.example.portfolio.entity.User;
 import org.hibernate.Session;

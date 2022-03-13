@@ -1,4 +1,4 @@
-package com.example.portfolio.UserCurrencyService;
+package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
 
 import com.example.portfolio.Database.UserServiceInterface;
 import com.example.portfolio.entity.User;

@@ -1,4 +1,4 @@
-package com.example.portfolio.UserCurrencyService;
+package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

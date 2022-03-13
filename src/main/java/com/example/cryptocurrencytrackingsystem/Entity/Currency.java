@@ -1,4 +1,4 @@
-package com.example.cryptocurrencytrackingsystem.entity;
+package com.example.cryptocurrencytrackingsystem.Entity;
 
 
 import javax.persistence.*;
