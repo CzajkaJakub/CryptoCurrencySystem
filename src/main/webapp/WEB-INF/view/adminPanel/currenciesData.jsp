@@ -1,3 +1,4 @@
+<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -39,6 +40,7 @@
     <table class="container">
         <thead>
         <tr>
+
             <th><h1>Id</h1></th>
             <th><h1>Login</h1></th>
             <th><h1>Password</h1></th>

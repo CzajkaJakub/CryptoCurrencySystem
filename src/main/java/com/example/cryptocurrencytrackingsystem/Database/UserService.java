@@ -42,9 +42,7 @@ public class UserService implements UserServiceInterface {
 
     @Override
     @Transactional
-    public List<User> getUsers() {
-        return userDAO.getUsers();
-    }
+    public List<User> getUsers(int theSortField) {return userDAO.getUsers(theSortField);}
 
     @Override
     @Transactional

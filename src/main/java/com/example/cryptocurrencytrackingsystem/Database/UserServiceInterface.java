@@ -11,7 +11,7 @@ public interface UserServiceInterface {
 
     //admin
     User getAdminAccount();
-    List<User> getUsers();
+    List<User> getUsers(int theSortField);
     void deleteAnAccount(Integer userId);
     void updateUser(User updatedUser);
     User getUser(Integer userId);

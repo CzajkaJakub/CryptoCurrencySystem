@@ -1,6 +1,7 @@
 package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
 import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -48,9 +49,26 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getUsers(){
-        Session session = sessionFactory.getCurrentSession();
-        Query<User> theQuery = session.createQuery("from User order by login", User.class);
+    public List<User> getUsers(int theSortField){
+        Session currentSession = sessionFactory.getCurrentSession();
+        String sortBy = null;
+
+        switch (theSortField) {
+            case SortUtils.id_sort:
+                sortBy = "id";
+                break;
+            case SortUtils.login_sort:
+                sortBy = "login";
+                break;
+            case SortUtils.password_sort:
+                sortBy = "password";
+                break;
+            case SortUtils.email_sort:
+                sortBy = "email";
+        }
+
+        String queryString = "from User order by " + sortBy;
+        Query<User> theQuery = currentSession.createQuery(queryString, User.class);
         return theQuery.getResultList();
     }
 
