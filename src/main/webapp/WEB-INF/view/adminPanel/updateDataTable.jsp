@@ -6,20 +6,12 @@
 <html>
 <head>
     <title>Users list</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/adminPanel.scss">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/navbar.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/table.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/background.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
-<div class="background-container">
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="clouds"></div>
-</div>
 
 <div class="btn"> <span class="fas fa-bars"></span> </div>
 <nav class="sidebar">
@@ -39,44 +31,42 @@
 </nav>
 
 <div class="content">
-    <div class="content2">
-        <div id="main-container">
-
-            <div id="container">
-                <div id="content">
-                    <table>
-                        <tr>
-                            <th>Login</th>
-                            <th>Password</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-
-                        <c:forEach var="tempUser" items="${usersData}">
-                            <tr>
-                                <td>${tempUser.login}</td>
-                                <td>${tempUser.password}</td>
-                                <td>${tempUser.email}</td>
-                                <td>
-                                    <c:url var="updateLink" value="/adminSystem/updateAnAccount">
-                                        <c:param name="userId" value="${tempUser.id}"/>
-                                    </c:url>
-                                    <a href="${updateLink}">Update an user</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-            </div>
-
-        </div>
+    <div class="background-container">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
     </div>
+    <table class="container">
+        <thead>
+        <tr>
+            <th><h1>Id</h1></th>
+            <th><h1>Login</h1></th>
+            <th><h1>Password</h1></th>
+            <th><h1>Email</h1></th>
+            <th><h1>Action</h1></th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <c:forEach var="tempUser" items="${usersData}">
+            <tr>
+                <td>${tempUser.id}</td>
+                <td>${tempUser.login}</td>
+                <td>${tempUser.password}</td>
+                <td>${tempUser.email}</td>
+                <td>
+                    <c:url var="updateLink" value="/adminSystem/updateAnAccount">
+                        <c:param name="userId" value="${tempUser.id}"/>
+                    </c:url>
+                    <a href="${updateLink}">Update an user</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/userCurrencyService/js/navbar.js"></script>
 </body>

@@ -1,49 +1,80 @@
-#container {
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body, html {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color:#A7A1AE;
+}
+
+.content{
     width: 100%;
-    margin:auto;
+    height: 100%;
 }
 
-table {
-    border-collapse:collapse;
-    font-family: Tahoma,Verdana,Segoe,sans-serif;
-    width:100%;
-    border-style: solid;
-    border-width: 5px;
-    border-color: grey;
-
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: #0a98d5;
 }
 
-th {
-    border-bottom:1px solid gray;
-    border-right: 2px solid grey;
-    background:none repeat scroll 0 0 #09c332;
-    padding:10px;
-    color: #FFFFFF;
-
-}
-
-tr {
+.container {
+    text-align: left;
+    overflow: hidden;
     width: 100%;
-    border-top:1px solid gray;
-    text-align:center;
+    margin: 0 auto;
+    display: table;
+    padding: 20px 20px 20px 320px;
+    height: auto;
+    z-index: 0;
+
 }
 
-td {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-right: 2px solid grey;
+h1 {
+    font-size:3em;
+    font-weight: 300;
+    line-height:1em;
+    text-align: center;
+    color: #4DC3FA;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #BBBBBB}
-
-
-
-#header h2 {
-    width: auto;
-    margin:auto;
-    color: #FFFFFF;
+h2 {
+    font-size:1em;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+    line-height:1em;
+    padding-bottom: 2em;
 }
 
-#container h3 {color: #000;}
-#container #content {margin-top: 20px;}
+h2 a {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+
+
+.container td, .container th {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+    background-color: #2C3446;
+}
+
+.container th {
+    background-color: #1F2739;
+}
+
+.container td:first-child { color: #FB667A; }
