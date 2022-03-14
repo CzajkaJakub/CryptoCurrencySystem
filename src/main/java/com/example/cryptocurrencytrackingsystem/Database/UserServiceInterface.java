@@ -5,11 +5,14 @@ import com.example.cryptocurrencytrackingsystem.Entity.User;
 import java.util.List;
 
 public interface UserServiceInterface {
-    List<User> getUsers();
-    void saveUser(User user);
-    User getAdminAccount();
+    //user
     User getUser(String login);
+    void saveUser(User user);
+
+    //admin
+    User getAdminAccount();
+    List<User> getUsers();
     void deleteAnAccount(Integer userId);
-    User getUser(Integer id);
     void updateUser(User updatedUser);
+    User getUser(Integer userId);
 }

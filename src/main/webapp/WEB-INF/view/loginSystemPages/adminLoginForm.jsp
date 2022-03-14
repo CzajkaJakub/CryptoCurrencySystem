@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Form</title>
+    <title>Admin login form</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/userFormStyle.scss">
 </head>
 
@@ -17,21 +17,20 @@
 </div>
 
 <div class="form">
-    <form:form method="get" action="../showMainSystem" cssStyle="text-align: right">
+    <form:form action="../showMainSystem" method="get" id="backWrapper">
         <input href="showMainSystem" type="image" src="${pageContext.request.contextPath}/resources/userCurrencyService/images/arrow.png" alt="Submit" width="24" height="24">
     </form:form>
-    <form:form method="get" action="loginProcess" modelAttribute="existedUser">
-        <div class="title">Welcome</div>
-        <div class="subtitle">Login to your account</div>
+    <form:form method="get" action="processAdminLogin" modelAttribute="admin">
+        <div class="title">Admin panel</div>
         <div class="input-container ic1">
             <form:errors path="login" cssClass="loginError" />
-            <form:input  path="login" id="login" class="input" type="text" placeholder="." />
+            <form:input path="login" id="login" class="input" type="text" placeholder="." />
             <div class="cut cut-short"></div>
             <label for="login" class="placeholder">Login</label>
         </div>
         <div class="input-container ic2">
             <form:errors path="password" cssClass="loginError" />
-            <form:input path="password" id="password" class="input" type="password" placeholder="." />
+            <form:input path="password" id="password" class="input" type="password" placeholder="."/>
             <div class="cut"></div>
             <label for="password" class="placeholder">Password</label>
         </div>
@@ -44,6 +43,7 @@
         <input type="submit" class="submit" value="Login"/>
     </form:form>
 </div>
+
 
 
 </body>

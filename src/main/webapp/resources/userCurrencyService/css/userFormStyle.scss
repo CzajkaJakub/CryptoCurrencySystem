@@ -15,7 +15,7 @@ body {
 	background-color: #15172b;
 	border-radius: 20px;
 	box-sizing: border-box;
-	height: 500px;
+	height: auto;
 	padding: 20px;
 	width: 320px;
 	z-index: 1;
@@ -244,6 +244,12 @@ img{
 	position: absolute;
 	z-index: 3;
 	right: 20px;
+}
+
+#backWrapper{
+	text-align: right;
+	display: block;
+	margin-bottom: 0;
 }
 
 

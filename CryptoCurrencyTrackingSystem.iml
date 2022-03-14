@@ -8,6 +8,7 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/src/test/resources" relative="/resources" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
@@ -193,5 +194,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.0" level="project" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

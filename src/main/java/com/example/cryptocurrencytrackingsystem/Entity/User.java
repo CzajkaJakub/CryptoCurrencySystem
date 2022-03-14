@@ -14,13 +14,11 @@ public class User {
     private Integer id;
 
 
-    @Size(min = 5, message = "Your login should be longer!")
     @NotBlank(message = "Fill the empty fields!")
     @Column(name = "login")
     private String login;
 
 
-    @Size(min = 5, message = "Your password should be longer!")
     @NotBlank(message = "Fill the empty fields!")
     @Column(name = "password")
     private String password;

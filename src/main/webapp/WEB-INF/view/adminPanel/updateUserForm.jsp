@@ -4,8 +4,6 @@
 <html>
 <head>
     <title>Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/userCurrencyService/css/userFormStyle.scss">
 </head>
 
@@ -20,19 +18,19 @@
 
 
 <div class="form">
-    <form:form method="get" action="showAdminForm" cssStyle="text-align: right">
+    <form:form method="get" action="showDashboard" id="backWrapper">
     <input href="showMainSystem" type="image" src="${pageContext.request.contextPath}/resources/userCurrencyService/images/arrow.png" alt="Submit" width="24" height="24">
     </form:form>
 
 
+
     <form:form method="get" action="processAnUpdate" modelAttribute="userToUpdate">
-        <div class="title">Chan</div>
-        <div class="subtitle">Change it </div>
+        <div class="title">Admin panel</div>
+        <div class="subtitle">Change user's data</div>
         <div class="input-container ic1">
 
 <%--            need to assiciate user with id              --%>
             <form:hidden path="id"/>
-
             <form:errors path="login" cssClass="loginError" />
             <form:input  path="login" id="login" cssClass="input" type="text" readonly="true"/>
             <div class="cut cut-short"></div>

@@ -24,8 +24,8 @@ public class UserService implements UserServiceInterface {
 
     @Override
     @Transactional
-    public List<User> getUsers() {
-        return userDAO.getUsers();
+    public User getUser(String login) {
+        return userDAO.getUser(login);
     }
 
     @Override
@@ -42,8 +42,8 @@ public class UserService implements UserServiceInterface {
 
     @Override
     @Transactional
-    public User getUser(String login) {
-        return userDAO.getUser(login);
+    public List<User> getUsers() {
+        return userDAO.getUsers();
     }
 
     @Override
@@ -54,13 +54,13 @@ public class UserService implements UserServiceInterface {
 
     @Override
     @Transactional
-    public User getUser(Integer id) {
-        return userDAO.getUser(id);
+    public void updateUser(User updatedUser) {
+        userDAO.updateUser(updatedUser);
     }
 
     @Override
     @Transactional
-    public void updateUser(User updatedUser) {
-        userDAO.updateUser(updatedUser);
+    public User getUser(Integer userId) {
+        return userDAO.getUser(userId);
     }
 }

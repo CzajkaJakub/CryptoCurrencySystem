@@ -24,24 +24,20 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getUsers(){
-
-        // get a current hibernate session
+    public User getUser(String login) {
         Session session = sessionFactory.getCurrentSession();
-
-        // create a query - HQL language
-        Query<User> theQuery = session.createQuery("from User order by login", User.class);
-
-        // return executable result
-        return theQuery.getResultList();
+        Query<User> theQuery = session.createQuery("from User where login = :l", User.class);
+        theQuery.setParameter("l", login);
+        List<User> list = theQuery.getResultList();
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
     @Override
     public void saveUser(User user) {
-        // get a current hibernate session
         Session session = sessionFactory.getCurrentSession();
-
-        // save the object
         session.save(user);
     }
 
@@ -51,37 +47,31 @@ public class UserDaoImpl implements UserDAO {
         return session.get(User.class, 1);
     }
 
-
     @Override
-    public User getUser(String login) {
+    public List<User> getUsers(){
         Session session = sessionFactory.getCurrentSession();
-        Query<User> theQuery = session.createQuery("from User", User.class);
-        User tempUser = null;
-        for (User us: theQuery.getResultList()) {
-            if(us.getLogin().equals(login)){
-                tempUser = us;
-            }
-        }
-        return tempUser;
-    }
-
-    @Override
-    public User getUser(Integer id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(User.class, id);
+        Query<User> theQuery = session.createQuery("from User order by login", User.class);
+        return theQuery.getResultList();
     }
 
     @Override
     public void deleteAnAccount(Integer userId) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("delete from User where id= :userIde");
-        query.setParameter("userIde", userId);
-
+        Query<?> query = session.createQuery("delete from User where id= :userId");
+        query.setParameter("userId", userId);
+        query.executeUpdate();
     }
+
 
     @Override
     public void updateUser(User updatedUser) {
         Session session = sessionFactory.getCurrentSession();
         session.update(updatedUser);
+    }
+
+    @Override
+    public User getUser(Integer userId) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(User.class, userId);
     }
 }

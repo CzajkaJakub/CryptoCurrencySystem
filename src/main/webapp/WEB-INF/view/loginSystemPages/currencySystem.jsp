@@ -18,19 +18,19 @@
 </div>
 
 <div class="form">
-    <form:form action="../" method="get" cssStyle="text-align: right">
+    <form:form action="showMainSystem" method="get" id="backWrapper">
         <input type="image" src="${pageContext.request.contextPath}/resources/userCurrencyService/images/home.png" alt="Submit" width="24" height="24">
     </form:form>
     <div class="title">Welcome</div>
     <div class="subtitle">Let's check your crypto-currencies!</div>
-    <form:form method="get" action="user/loginIntoSystem">
+    <form:form method="get" action="loginSystem/logIntoSystem">
         <button type="submit"  class="submit">Login</button>
     </form:form>
-    <form:form method="get" action="user/registerNewUser">
+    <form:form method="get" action="registerSystem/registerNewUser">
         <button type="submit"  class="submit">Register</button>
     </form:form>
-    <form:form method="get" action="admin/showAdminForm">
-        <button type="submit"  class="submit">Login as admin</button>
+    <form:form method="get" action="adminSystem/logIntoSystem">
+        <button type="submit"  class="submit">Admin panel</button>
     </form:form>
 
 
@@ -65,7 +65,5 @@
 
     </div>
 </div>
-
-
 </body>
 </html>

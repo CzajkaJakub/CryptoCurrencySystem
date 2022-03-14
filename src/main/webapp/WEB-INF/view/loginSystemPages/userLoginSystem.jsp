@@ -18,17 +18,17 @@
 
 
 <div class="form">
-    <form:form method="get" action="../showMainSystem" cssStyle="text-align: right">
-    <input href="showMainSystem" type="image" src="${pageContext.request.contextPath}/resources/userCurrencyService/images/arrow.png" alt="Submit" width="24" height="24">
+    <form:form method="get" action="../showMainSystem" id="backWrapper">
+        <input href="showMainSystem" type="image" src="${pageContext.request.contextPath}/resources/userCurrencyService/images/arrow.png" alt="Submit" width="24" height="24">
     </form:form>
 
 
-    <form:form method="get" action="saveUserInDatabase" modelAttribute="newUser">
+    <form:form method="get" action="processLoginData" modelAttribute="user">
         <div class="title">Welcome</div>
-        <div class="subtitle">Let's create your account!</div>
+        <div class="subtitle">Let's login into your account!</div>
         <div class="input-container ic1">
-            <form:errors path="login" cssClass="loginError" />
-            <form:input  path="login" id="login" cssClass="input" type="text" placeholder="." />
+            <form:errors  path="login" cssClass="loginError" />
+            <form:input  path="login" id="login" cssClass="input" type="text" placeholder="."/>
             <div class="cut cut-short"></div>
             <label for="login" class="placeholder">Login</label>
         </div>
@@ -44,9 +44,9 @@
             <div class="cut cut-short"></div>
             <label for="email" class="placeholder">Email</label>
         </div>
-        <input type="submit" class="submit" value="Create an account"/>
+        <input type="submit" class="submit" value="Login into account"/>
     </form:form>
-    </div>
+</div>
 
 
 </body>

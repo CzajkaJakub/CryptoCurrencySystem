@@ -5,12 +5,16 @@ import com.example.cryptocurrencytrackingsystem.Entity.User;
 import java.util.List;
 
 public interface UserDAO {
-    List<User> getUsers();
-    void saveUser(User user);
-    User getAdminAccount();
+    //user
     User getUser(String login);
-    User getUser(Integer id);
+    void saveUser(User user);
+
+
+    //admin
+    User getAdminAccount();
+    List<User> getUsers();
     void deleteAnAccount(Integer userId);
     void updateUser(User updatedUser);
+    User getUser(Integer userId);
 
 }
