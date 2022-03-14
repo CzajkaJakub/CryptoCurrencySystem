@@ -42,21 +42,16 @@
     <div class="content2">
         <div id="main-container">
 
-            <div id="wrapper">
-                <div id="header">
-                    <h2>UAM - Users Accounts Manager</h2>
-                </div>
-            </div>
-
             <div id="container">
                 <div id="content">
                     <table>
                         <tr>
-                            <th>First name</th>
-                            <th>Last name</th>
+                            <th>Login</th>
+                            <th>Password</th>
                             <th>Email</th>
                             <th>Actions</th>
                         </tr>
+
                         <c:forEach var="tempUser" items="${usersData}">
                             <tr>
                                 <td>${tempUser.login}</td>
@@ -68,12 +63,6 @@
                                     </c:url>
 
                                     <a href="${deleteLink}">Delete an user</a>
-
-                                    <c:url var="updateLink" value="/adminSystem/updateAnAccount">
-                                        <c:param name="userId" value="${tempUser.id}"/>
-                                    </c:url>
-                                    <a href="${updateLink}">Update an user</a>
-
                                 </td>
                             </tr>
                         </c:forEach>

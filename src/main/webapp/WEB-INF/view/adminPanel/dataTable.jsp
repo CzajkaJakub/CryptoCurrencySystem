@@ -28,12 +28,12 @@
         <li class="active"><a href="showDashboard">Dashboard</a></li>
         <li> <a id="1">Users<span class="fas fa-caret-down"></span></a>
             <ul class="item-show-1">
-                <li><a href="#">Update an Account</a></li>
-                <li><a href="#">Delete an account</a></li>
+                <li><a href="showTable">Show users</a></li>
+                <li><a href="showTableToUpdate">Update an Account</a></li>
+                <li><a href="showTableToRemove">Delete an account</a></li>
             </ul>
         </li>
         <li><a href="showCurrencies">Show currencies</a></li>
-        <li><a href="showTable">Show users</a></li>
         <li><a href="../showMainSystem">Log out</a></li>
     </ul>
 </nav>
@@ -42,35 +42,20 @@
     <div class="content2">
         <div id="main-container">
 
-
-
             <div id="container">
                 <div id="content">
                     <table>
                         <tr>
-                            <th>First name</th>
-                            <th>Last name</th>
+                            <th>Login</th>
+                            <th>Password</th>
                             <th>Email</th>
-                            <th>Actions</th>
                         </tr>
+
                         <c:forEach var="tempUser" items="${usersData}">
                             <tr>
                                 <td>${tempUser.login}</td>
                                 <td>${tempUser.password}</td>
                                 <td>${tempUser.email}</td>
-                                <td>
-                                    <c:url var="deleteLink" value="/adminSystem/deleteAnAccount">
-                                        <c:param name="userId" value="${tempUser.id}"/>
-                                    </c:url>
-
-                                    <a href="${deleteLink}">Delete an user</a>
-
-                                    <c:url var="updateLink" value="/adminSystem/updateAnAccount">
-                                        <c:param name="userId" value="${tempUser.id}"/>
-                                    </c:url>
-                                    <a href="${updateLink}">Update an user</a>
-
-                                </td>
                             </tr>
                         </c:forEach>
                     </table>

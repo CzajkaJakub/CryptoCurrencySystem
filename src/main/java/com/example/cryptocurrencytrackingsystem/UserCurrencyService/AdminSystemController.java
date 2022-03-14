@@ -90,13 +90,27 @@ public class AdminSystemController {
     }
 
     @GetMapping("/showDashboard")
-    public String showDashboard() {
+    public String showDashboard(Model theModel) {
+        theModel.addAttribute("usersData", userService.getUsers());
         return "adminPanel/adminPanel";
     }
 
     @GetMapping("/showCurrencies")
-    public String showCurrencies() {
+    public String showCurrencies(Model theModel) {
+        theModel.addAttribute("usersData", userService.getUsers());
         return "adminPanel/currenciesData";
+    }
+
+    @GetMapping("/showTableToUpdate")
+    public String showTableToUpdate(Model theModel) {
+        theModel.addAttribute("usersData", userService.getUsers());
+        return "adminPanel/updateDataTable";
+    }
+
+    @GetMapping("/showTableToRemove")
+    public String showTableToRemove(Model theModel) {
+        theModel.addAttribute("usersData", userService.getUsers());
+        return "adminPanel/removeUserTable";
     }
 }
 

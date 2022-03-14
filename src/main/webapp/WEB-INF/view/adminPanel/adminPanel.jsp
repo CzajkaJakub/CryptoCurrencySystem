@@ -28,12 +28,12 @@
         <li class="active"><a href="showDashboard">Dashboard</a></li>
         <li> <a id="1">Users<span class="fas fa-caret-down"></span></a>
             <ul class="item-show-1">
-                <li><a href="#">Update an Account</a></li>
-                <li><a href="#">Delete an account</a></li>
+                <li><a href="showTable">Show users</a></li>
+                <li><a href="showTableToUpdate">Update an Account</a></li>
+                <li><a href="showTableToRemove">Delete an account</a></li>
             </ul>
         </li>
         <li><a href="showCurrencies">Show currencies</a></li>
-        <li><a href="showTable">Show users</a></li>
         <li><a href="../showMainSystem">Log out</a></li>
     </ul>
 </nav>
