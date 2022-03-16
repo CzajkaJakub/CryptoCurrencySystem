@@ -2,13 +2,19 @@ package com.example.cryptocurrencytrackingsystem.Database;
 
 import com.example.cryptocurrencytrackingsystem.Database.DAOS.UserDAO;
 import com.example.cryptocurrencytrackingsystem.Database.DAOS.UserDaoImpl;
+import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -61,4 +67,32 @@ public class UserService implements UserServiceInterface {
     public User getUser(Integer userId) {
         return userDAO.getUser(userId);
     }
+
+    @Override
+    @Transactional
+    public List<Currency> getCurrencies() {
+        List<Currency> currencyList = new ArrayList<>();
+        try {
+            URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
+            for (Object x: list) {
+                String jsonCurrency = objectMapper.writeValueAsString(x);
+                Currency currency = objectMapper.readValue(jsonCurrency, Currency.class);
+                currencyList.add(currency);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        updateCurrencyInDatabase(currencyList);
+        return currencyList;
+    }
+
+    @Override
+    @Transactional
+    public void updateCurrencyInDatabase(List<Currency> currency) {
+        userDAO.updateCurrencyInDatabase(currency);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils" %>
+<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsUsers" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -41,20 +41,30 @@
         <thead>
         <tr>
 
-            <th><h1>Id</h1></th>
-            <th><h1>Login</h1></th>
-            <th><h1>Password</h1></th>
-            <th><h1>Email</h1></th>
+            <th><h1>Name</h1></th>
+            <th><h1>Symbol</h1></th>
+            <th><h1>Market cap rank</h1></th>
+            <th><h1>Market cap</h1></th>
+            <th><h1>Currency price [$]</h1></th>
+            <th><h1>Ath</h1></th>
+            <th><h1>Atl</h1></th>
+            <th><h1>High 24h</h1></th>
+            <th><h1>Low 24h</h1></th>
         </tr>
         </thead>
 
         <tbody>
-        <c:forEach var="tempUser" items="${usersData}">
+        <c:forEach var="tempCurrency" items="${currenciesData}">
             <tr>
-                <td>${tempUser.id}</td>
-                <td>${tempUser.login}</td>
-                <td>${tempUser.password}</td>
-                <td>${tempUser.email}</td>
+                <td>${tempCurrency.name}</td>
+                <td>${tempCurrency.symbol}</td>
+                <td>${tempCurrency.market_cap_rank}</td>
+                <td>${tempCurrency.market_cap}</td>
+                <td>${tempCurrency.current_price}</td>
+                <td>${tempCurrency.ath}</td>
+                <td>${tempCurrency.atl}</td>
+                <td>${tempCurrency.high_24h}</td>
+                <td>${tempCurrency.low_24h}</td>
             </tr>
         </c:forEach>
         </tbody>

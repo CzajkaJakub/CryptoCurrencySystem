@@ -1,90 +1,157 @@
 package com.example.cryptocurrencytrackingsystem.Entity;
 
 
-import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "name")
+    @JsonProperty("name")
+    private String name;
 
-    @Column(name = "currency_name")
-    private String currency_name;
+    @Column(name = "symbol")
+    @JsonProperty("symbol")
+    private String symbol;
 
-    @Column(name = "Price")
-    private Double price;
+    @Column(name = "current_price")
+    @JsonProperty("current_price")
+    private float current_price;
 
-    @Column(name = "Amount")
-    private Double amount;
+    @Column(name = "market_cap")
+    @JsonProperty("market_cap")
+    private float market_cap;
 
-    @Column(name = "Value")
-    private Double value;
+    @Column(name = "market_cap_rank")
+    @JsonProperty("market_cap_rank")
+    private int market_cap_rank;
 
+    @Column(name = "ath")
+    @JsonProperty("ath")
+    private float ath;
 
-    public Currency(Integer id, String currency_name, Double price, Double amount, Double value) {
-        this.id = id;
-        this.currency_name = currency_name;
-        this.price = price;
-        this.amount = amount;
-        this.value = value;
-    }
+    @Column(name = "atl")
+    @JsonProperty("atl")
+    private float atl;
+
+    @Column(name = "high_24h")
+    @JsonProperty("high_24h")
+    private float high_24h;
+
+    @Column(name = "low_24h")
+    @JsonProperty("low_24h")
+    private float low_24h;
+
 
     public Currency() {
-
     }
 
-    public Integer getId() {
-        return id;
+    public Currency(String name, String symbol, float current_price, float market_cap, int market_cap_rank, float ath, float atl, float high_24h, float low_24h) {
+        this.name = name;
+        this.symbol = symbol;
+        this.current_price = current_price;
+        this.market_cap = market_cap;
+        this.market_cap_rank = market_cap_rank;
+        this.ath = ath;
+        this.atl = atl;
+        this.high_24h = high_24h;
+        this.low_24h = low_24h;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String getCurrency_name() {
-        return currency_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCurrency_name(String currency_name) {
-        this.currency_name = currency_name;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public Double getPrice() {
-        return price;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public float getCurrent_price() {
+        return current_price;
     }
 
-    public Double getAmount() {
-        return amount;
+    public void setCurrent_price(float current_price) {
+        this.current_price = current_price;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public float getMarket_cap() {
+        return market_cap;
     }
 
-    public Double getValue() {
-        return value;
+    public void setMarket_cap(float market_cap) {
+        this.market_cap = market_cap;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public int getMarket_cap_rank() {
+        return market_cap_rank;
+    }
+
+    public void setMarket_cap_rank(int market_cap_rank) {
+        this.market_cap_rank = market_cap_rank;
+    }
+
+    public float getAth() {
+        return ath;
+    }
+
+    public void setAth(float ath) {
+        this.ath = ath;
+    }
+
+    public float getAtl() {
+        return atl;
+    }
+
+    public void setAtl(float atl) {
+        this.atl = atl;
+    }
+
+    public float getHigh_24h() {
+        return high_24h;
+    }
+
+    public void setHigh_24h(float high_24h) {
+        this.high_24h = high_24h;
+    }
+
+    public float getLow_24h() {
+        return low_24h;
+    }
+
+    public void setLow_24h(float low_24h) {
+        this.low_24h = low_24h;
     }
 
     @Override
     public String toString() {
         return "Currency{" +
-                "id=" + id +
-                ", currency_name='" + currency_name + '\'' +
-                ", price=" + price +
-                ", amount=" + amount +
-                ", value=" + value +
+                "name='" + name + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", current_price=" + current_price +
+                ", market_cap=" + market_cap +
+                ", market_cap_rank=" + market_cap_rank +
+                ", ath=" + ath +
+                ", atl=" + atl +
+                ", high_24h=" + high_24h +
+                ", low_24h=" + low_24h +
                 '}';
     }
 }

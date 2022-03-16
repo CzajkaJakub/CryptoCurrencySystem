@@ -1,7 +1,10 @@
 package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
+import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
-import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsUsers;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -10,6 +13,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -54,16 +60,16 @@ public class UserDaoImpl implements UserDAO {
         String sortBy = null;
 
         switch (theSortField) {
-            case SortUtils.id_sort:
+            case SortUtilsUsers.id_sort:
                 sortBy = "id";
                 break;
-            case SortUtils.login_sort:
+            case SortUtilsUsers.login_sort:
                 sortBy = "login";
                 break;
-            case SortUtils.password_sort:
+            case SortUtilsUsers.password_sort:
                 sortBy = "password";
                 break;
-            case SortUtils.email_sort:
+            case SortUtilsUsers.email_sort:
                 sortBy = "email";
         }
 
@@ -92,4 +98,14 @@ public class UserDaoImpl implements UserDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, userId);
     }
+
+    @Override
+    public void updateCurrencyInDatabase(List<Currency> currency) {
+        Session session = sessionFactory.getCurrentSession();
+        for (Currency curr: currency) {
+            session.save(curr);
+        }
+    }
+
+
 }

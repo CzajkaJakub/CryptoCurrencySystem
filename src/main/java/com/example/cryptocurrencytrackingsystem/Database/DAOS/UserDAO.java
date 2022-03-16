@@ -1,5 +1,6 @@
 package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
+import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public interface UserDAO {
     void updateUser(User updatedUser);
     User getUser(Integer userId);
 
+    void updateCurrencyInDatabase(List<Currency> currency);
 }

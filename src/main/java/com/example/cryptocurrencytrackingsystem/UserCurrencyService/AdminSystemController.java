@@ -1,10 +1,7 @@
 package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
 
         import com.example.cryptocurrencytrackingsystem.Database.UserServiceInterface;
-        import com.example.cryptocurrencytrackingsystem.Entity.Currency;
         import com.example.cryptocurrencytrackingsystem.Entity.User;
-        import com.fasterxml.jackson.core.type.TypeReference;
-        import com.fasterxml.jackson.databind.ObjectMapper;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.beans.factory.annotation.Qualifier;
         import org.springframework.stereotype.Controller;
@@ -16,8 +13,6 @@ package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
         import org.springframework.web.bind.annotation.RequestParam;
 
         import javax.validation.Valid;
-        import java.net.MalformedURLException;
-        import java.net.URL;
         import java.util.List;
 
 @Controller
@@ -64,7 +59,7 @@ public class AdminSystemController {
                                   @RequestParam("userId") Integer userId) {
 
         userService.deleteAnAccount(userId);
-        theModel.addAttribute("usersData", userService.getUsers(SortUtils.id_sort));
+        theModel.addAttribute("usersData", userService.getUsers(SortUtilsUsers.id_sort));
         return "adminPanel/adminPanel";
     }
 
@@ -84,7 +79,7 @@ public class AdminSystemController {
         if(!theBindingResult.hasErrors()) {
             userService.updateUser(updatedUser);
             theBindingResult.rejectValue("login", "error.login", "Account updated!");
-            theModel.addAttribute("usersData", userService.getUsers(SortUtils.id_sort));
+            theModel.addAttribute("usersData", userService.getUsers(SortUtilsUsers.id_sort));
         }
         return "adminPanel/updateUserForm";
     }
@@ -101,25 +96,12 @@ public class AdminSystemController {
         return "adminPanel/adminPanel";
     }
 
-    ////////////////////////////////////////////////TODO
+
     @GetMapping("/showCurrencies")
-    public String showCurrencies(Model theModel) {//TODO TU ZROBIC NOWA KLASE
-        theModel.addAttribute("usersData", userService.getUsers(SortUtils.id_sort));
+    public String showCurrencies(Model theModel) {
+        theModel.addAttribute("currenciesData", userService.getCurrencies());
         return "adminPanel/currenciesData";
     }
-
-//    private List<Currency> getCurrencies() {
-//        try {
-//            URL ulr = new URL("https://api.pancakeswap.info/api/v2/tokens");
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            return objectMapper.readValue(ulr, new TypeReference<>(){});
-//
-//
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-    ///////////// TODO
 
     @GetMapping("/showTableToUpdate")
     public String showTableToUpdate(Model theModel, @RequestParam(required=false) String sort) {
@@ -135,12 +117,12 @@ public class AdminSystemController {
 
 
     private List<User> getSortedList(String sort) {
-        List<User> theCustomers = null;
+        List<User> theCustomers;
         if (sort != null) {
             int theSortField = Integer.parseInt(sort);
             theCustomers = userService.getUsers(theSortField);
         } else {
-            theCustomers = userService.getUsers(SortUtils.id_sort);
+            theCustomers = userService.getUsers(SortUtilsUsers.id_sort);
         }
         return theCustomers;
     }
