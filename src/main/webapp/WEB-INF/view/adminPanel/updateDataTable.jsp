@@ -1,4 +1,5 @@
 <%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils" %>
+<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsUsers" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -41,16 +42,16 @@
         <thead>
         <tr>
             <c:url var="sortLinkId" value="/adminSystem/showTableToUpdate">
-                <c:param name="sort" value="<%= Integer.toString(SortUtils.id_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.id_sort) %>" />
             </c:url>
             <c:url var="sortLinkLogin" value="/adminSystem/showTableToUpdate">
-                <c:param name="sort" value="<%= Integer.toString(SortUtils.login_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.login_sort) %>" />
             </c:url>
             <c:url var="sortLinkPassword" value="/adminSystem/showTableToUpdate">
-                <c:param name="sort" value="<%= Integer.toString(SortUtils.password_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.password_sort) %>" />
             </c:url>
             <c:url var="sortLinkEmail" value="/adminSystem/showTableToUpdate">
-                <c:param name="sort" value="<%= Integer.toString(SortUtils.email_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.email_sort) %>" />
             </c:url>
 
             <th><h1><a href="${sortLinkId}">Id</a></h1></th>

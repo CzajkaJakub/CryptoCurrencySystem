@@ -20,5 +20,6 @@ public interface UserServiceInterface {
     //common
     List<Currency> getCurrencies();
     void updateCurrencyInDatabase(List<Currency> currency);
+    List<Currency> getSortedCurrencies(int theSortField);
 
 }

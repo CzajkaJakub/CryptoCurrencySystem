@@ -103,6 +103,12 @@ public class AdminSystemController {
         return "adminPanel/currenciesData";
     }
 
+    @GetMapping("/showSortedCurrencies")
+    public String showSortedCurrencies(Model theModel, @RequestParam(required=false) int sortType) {
+        theModel.addAttribute("currenciesData", userService.getSortedCurrencies(sortType));
+        return "adminPanel/currenciesData";
+    }
+
     @GetMapping("/showTableToUpdate")
     public String showTableToUpdate(Model theModel, @RequestParam(required=false) String sort) {
         theModel.addAttribute("usersData", getSortedList(sort));

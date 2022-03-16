@@ -2,6 +2,7 @@ package com.example.cryptocurrencytrackingsystem.Database.DAOS;
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsCurrencies;
 import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsUsers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -103,8 +104,52 @@ public class UserDaoImpl implements UserDAO {
     public void updateCurrencyInDatabase(List<Currency> currency) {
         Session session = sessionFactory.getCurrentSession();
         for (Currency curr: currency) {
-            session.save(curr);
+            try{
+                session.save(currency);
+            } catch (Exception e){
+                session.update(curr);
+            }
         }
+    }
+
+    @Override
+    public List<Currency> getSortedCurrencies(int theSortField) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        String sortBy = null;
+
+        switch (theSortField) {
+            case SortUtilsCurrencies.name_sort:
+                sortBy = "name";
+                break;
+            case SortUtilsCurrencies.symbol_sort:
+                sortBy = "symbol";
+                break;
+            case SortUtilsCurrencies.current_price_sort:
+                sortBy = "current_price";
+                break;
+            case SortUtilsCurrencies.market_cap_sort:
+                sortBy = "market_cap";
+                break;
+            case SortUtilsCurrencies.market_cap_rank_sort:
+                sortBy = "market_cap_rank";
+                break;
+            case SortUtilsCurrencies.ath_sort:
+                sortBy = "ath";
+                break;
+            case SortUtilsCurrencies.atl_sort:
+                sortBy = "atl";
+                break;
+            case SortUtilsCurrencies.high_24h_sort:
+                sortBy = "high_24h";
+                break;
+            case SortUtilsCurrencies.low_24h_sort:
+                sortBy = "low_24h";
+                break;
+        }
+
+        String queryString = "from Currency order by " + sortBy;
+        Query<Currency> theQuery = currentSession.createQuery(queryString, Currency.class);
+        return theQuery.getResultList();
     }
 
 

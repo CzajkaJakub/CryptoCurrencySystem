@@ -94,5 +94,11 @@ public class UserService implements UserServiceInterface {
         userDAO.updateCurrencyInDatabase(currency);
     }
 
+    @Override
+    @Transactional
+    public List<Currency> getSortedCurrencies(int theSortField) {
+        return userDAO.getSortedCurrencies(theSortField);
+    }
+
 
 }

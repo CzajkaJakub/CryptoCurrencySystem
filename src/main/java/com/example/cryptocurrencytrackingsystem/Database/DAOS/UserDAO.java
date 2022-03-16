@@ -19,4 +19,5 @@ public interface UserDAO {
     User getUser(Integer userId);
 
     void updateCurrencyInDatabase(List<Currency> currency);
+    List<Currency> getSortedCurrencies(int theSortField);
 }
