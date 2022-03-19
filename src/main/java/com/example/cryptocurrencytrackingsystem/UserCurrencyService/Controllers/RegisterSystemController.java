@@ -1,6 +1,6 @@
-package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
+package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers;
 
-import com.example.cryptocurrencytrackingsystem.Database.UserServiceInterface;
+import com.example.cryptocurrencytrackingsystem.Database.DataServiceInterface;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 @RequestMapping("/registerSystem")
 public class RegisterSystemController {
 
-    private UserServiceInterface userService;
+    private DataServiceInterface userService;
 
     @Autowired
-    public void setCustomerDAO(@Qualifier("userService") UserServiceInterface userService) {
+    public void setCustomerDAO(@Qualifier("userService") DataServiceInterface userService) {
         this.userService = userService;
     }
 

@@ -1,5 +1,5 @@
-<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsUsers" %>
-<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtilsCurrencies" %>
+<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsUsers" %>
+<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

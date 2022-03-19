@@ -1,4 +1,4 @@
-package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
+package com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils;
 
 public interface SortUtilsCurrencies {
     int name_sort = 1;

@@ -1,15 +1,14 @@
-package com.example.cryptocurrencytrackingsystem.Database.DAOS;
+package com.example.cryptocurrencytrackingsystem.Database;
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface DataServiceInterface {
     //user
     User getUser(String login);
     void saveUser(User user);
-
 
     //admin
     User getAdminAccount();
@@ -18,6 +17,9 @@ public interface UserDAO {
     void updateUser(User updatedUser);
     User getUser(Integer userId);
 
-    void updateCurrencyInDatabase(List<Currency> currency);
+    //common
+    List<Currency> getCurrencies();
     List<Currency> getSortedCurrencies(int theSortField);
+    void updateCurrencyInDatabase(List<Currency> currency);
+
 }

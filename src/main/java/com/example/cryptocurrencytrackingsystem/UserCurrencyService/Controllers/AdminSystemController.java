@@ -1,28 +1,29 @@
-package com.example.cryptocurrencytrackingsystem.UserCurrencyService;
+package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers;
 
-        import com.example.cryptocurrencytrackingsystem.Database.UserServiceInterface;
-        import com.example.cryptocurrencytrackingsystem.Entity.User;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.beans.factory.annotation.Qualifier;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.validation.BindingResult;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.ModelAttribute;
-        import org.springframework.web.bind.annotation.RequestMapping;
-        import org.springframework.web.bind.annotation.RequestParam;
+import com.example.cryptocurrencytrackingsystem.Database.DataServiceInterface;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsUsers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-        import javax.validation.Valid;
-        import java.util.List;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/adminSystem")
 public class AdminSystemController {
 
-    private UserServiceInterface userService;
+    private DataServiceInterface userService;
 
     @Autowired
-    public void setCustomerDAO(@Qualifier("userService") UserServiceInterface userService) {
+    public void setCustomerDAO(@Qualifier("userService") DataServiceInterface userService) {
         this.userService = userService;
     }
 
