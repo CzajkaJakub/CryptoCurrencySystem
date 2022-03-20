@@ -1,4 +1,4 @@
-package com.example.cryptocurrencytrackingsystem.Configuration;
+package com.example.cryptocurrencytrackingsystem.Configuration.ApplicationConfiguration;
 
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
