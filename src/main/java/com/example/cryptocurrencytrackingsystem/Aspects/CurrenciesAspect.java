@@ -1,11 +1,8 @@
 package com.example.cryptocurrencytrackingsystem.Aspects;
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
-import com.example.cryptocurrencytrackingsystem.Entity.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
