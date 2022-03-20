@@ -2,7 +2,6 @@ package com.example.cryptocurrencytrackingsystem.Aspects;
 
 
 import com.example.cryptocurrencytrackingsystem.Entity.User;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component("adminAspect")
-public class AdminAspects {
+public class AdminAspect {
 
     @Pointcut("execution(* com.example.cryptocurrencytrackingsystem.Database.DAOS.Admin.AdminDAO.getAdminAccount(..))")
     public void checkAdminData(){}

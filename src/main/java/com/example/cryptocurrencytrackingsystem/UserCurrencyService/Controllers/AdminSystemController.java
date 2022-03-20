@@ -1,7 +1,9 @@
 package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers;
 
 import com.example.cryptocurrencytrackingsystem.Database.DataServiceInterface;
+import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies;
 import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -90,15 +92,9 @@ public class AdminSystemController {
     }
 
 
-    @GetMapping("/showCurrencies")
-    public String showCurrencies(Model theModel) {
-        theModel.addAttribute("currenciesData", dataService.getCurrencies());
-        return "adminPanel/currenciesData";
-    }
-
     @GetMapping("/showSortedCurrencies")
-    public String showSortedCurrencies(Model theModel, @RequestParam(required=false) int sortType) {
-        theModel.addAttribute("currenciesData", dataService.getSortedCurrencies(sortType));
+    public String showSortedCurrencies(Model theModel, @RequestParam(required=false) String sortType) {
+        theModel.addAttribute("currenciesData", getSortedCurrencies(sortType));
         return "adminPanel/currenciesData";
     }
 
@@ -124,6 +120,17 @@ public class AdminSystemController {
             theCustomers = dataService.getUsers(SortUtilsUsers.id_sort);
         }
         return theCustomers;
+    }
+
+    private List<Currency> getSortedCurrencies(String sortType){
+        List<Currency> currencies;
+        if (sortType != null) {
+            int theSortField = Integer.parseInt(sortType);
+            currencies = dataService.getSortedCurrencies(theSortField);
+        } else {
+            currencies = dataService.getSortedCurrencies(SortUtilsCurrencies.name_sort);
+        }
+        return currencies;
     }
 }
 

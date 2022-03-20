@@ -24,22 +24,11 @@ public class CommonDaoImpl implements CommonDAO{
     }
 
     @Override
-    public void updateCurrencyInDatabase(List<Currency> currency) {
-        Session session = sessionFactory.getCurrentSession();
-        for (Currency curr: currency) {
-            session.update(curr);
-        }
-    }
-
-    @Override
     public List<Currency> getSortedCurrencies(int theSortField) {
         Session currentSession = sessionFactory.getCurrentSession();
-        String sortBy = null;
+        String sortBy = "name";
 
         switch (theSortField) {
-            case SortUtilsCurrencies.name_sort:
-                sortBy = "name";
-                break;
             case SortUtilsCurrencies.symbol_sort:
                 sortBy = "symbol";
                 break;
@@ -63,6 +52,9 @@ public class CommonDaoImpl implements CommonDAO{
                 break;
             case SortUtilsCurrencies.low_24h_sort:
                 sortBy = "low_24h";
+                break;
+            case SortUtilsCurrencies.name_sort:
+                sortBy = "name";
                 break;
         }
 

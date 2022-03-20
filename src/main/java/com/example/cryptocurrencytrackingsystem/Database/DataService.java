@@ -16,9 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
@@ -76,32 +74,6 @@ public class DataService implements DataServiceInterface {
     @Transactional
     public User getUser(Integer userId) {
         return adminDao.getUser(userId);
-    }
-
-    @Override
-    @Transactional
-    public List<Currency> getCurrencies() {
-        List<Currency> currencyList = new ArrayList<>();
-        try {
-            URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-            ObjectMapper objectMapper = new ObjectMapper();
-            List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
-            for (Object x: list) {
-                String jsonCurrency = objectMapper.writeValueAsString(x);
-                Currency currency = objectMapper.readValue(jsonCurrency, Currency.class);
-                currencyList.add(currency);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        updateCurrencyInDatabase(currencyList);
-        return currencyList;
-    }
-
-    @Override
-    @Transactional
-    public void updateCurrencyInDatabase(List<Currency> currency) {
-        commonDAO.updateCurrencyInDatabase(currency);
     }
 
     @Override

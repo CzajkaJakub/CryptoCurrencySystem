@@ -33,7 +33,7 @@ public class AdminDaoImpl implements AdminDAO {
     @Override
     public List<User> getUsers(int theSortField){
         Session currentSession = sessionFactory.getCurrentSession();
-        String sortBy = null;
+        String sortBy = "id";
 
         switch (theSortField) {
             case SortUtilsUsers.id_sort:

@@ -18,8 +18,6 @@ public interface DataServiceInterface {
     User getUser(Integer userId);
 
     //common
-    List<Currency> getCurrencies();
     List<Currency> getSortedCurrencies(int theSortField);
-    void updateCurrencyInDatabase(List<Currency> currency);
 
 }

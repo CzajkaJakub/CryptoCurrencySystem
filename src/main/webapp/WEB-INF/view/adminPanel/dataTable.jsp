@@ -26,7 +26,7 @@
                 <li><a href="showTableToRemove">Delete an account</a></li>
             </ul>
         </li>
-        <li><a href="showCurrencies">Show currencies</a></li>
+        <li><a href="showSortedCurrencies">Show currencies</a></li>
         <li><a href="../showMainSystem">Log out</a></li>
     </ul>
 </nav>
