@@ -11,7 +11,7 @@ public interface DataServiceInterface {
     void saveUser(User user);
 
     //admin
-    User getAdminAccount();
+    User getAdminAccount(User admin);
     List<User> getUsers(int theSortField);
     void deleteAnAccount(Integer userId);
     void updateUser(User updatedUser);

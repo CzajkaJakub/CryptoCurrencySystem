@@ -24,7 +24,7 @@ public class AdminDaoImpl implements AdminDAO {
     }
 
     @Override
-    public User getAdminAccount() {
+    public User getAdminAccount(User admin) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, 1);
     }

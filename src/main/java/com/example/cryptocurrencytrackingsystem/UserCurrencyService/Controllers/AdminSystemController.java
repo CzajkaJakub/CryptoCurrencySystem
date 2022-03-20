@@ -20,11 +20,11 @@ import java.util.List;
 @RequestMapping("/adminSystem")
 public class AdminSystemController {
 
-    private DataServiceInterface userService;
+    private DataServiceInterface dataService;
 
     @Autowired
-    public void setCustomerDAO(@Qualifier("userService") DataServiceInterface userService) {
-        this.userService = userService;
+    public void setDataServiceDAO(@Qualifier("dataService") DataServiceInterface dataService) {
+        this.dataService = dataService;
     }
 
     @GetMapping("/logIntoSystem")
@@ -39,7 +39,7 @@ public class AdminSystemController {
 
         if (theBindingResult.hasErrors()) {
             return "loginSystemPages/adminLoginForm";
-        } else if (checkAdminData(admin)) {
+        } else if (dataService.getAdminAccount(admin) != null) {
             return "adminPanel/adminPanel";
         } else {
             theBindingResult.rejectValue("login", "error.login", "Wrong data, try again!");
@@ -47,20 +47,12 @@ public class AdminSystemController {
         }
     }
 
-    private boolean checkAdminData(User data) {
-        User adminAccount = userService.getAdminAccount();
-        return  adminAccount.getLogin().equals(data.getLogin()) &&
-                adminAccount.getPassword().equals(data.getPassword()) &&
-                adminAccount.getEmail().equals(data.getEmail());
-    }
-
-
     @GetMapping("/deleteAnAccount")
     public String deleteAnAccount(Model theModel,
                                   @RequestParam("userId") Integer userId) {
 
-        userService.deleteAnAccount(userId);
-        theModel.addAttribute("usersData", userService.getUsers(SortUtilsUsers.id_sort));
+        dataService.deleteAnAccount(userId);
+        theModel.addAttribute("usersData", dataService.getUsers(SortUtilsUsers.id_sort));
         return "adminPanel/adminPanel";
     }
 
@@ -68,7 +60,7 @@ public class AdminSystemController {
     public String updateAnAccount(Model theModel,
                                   @RequestParam("userId") Integer userId) {
 
-        theModel.addAttribute("userToUpdate", userService.getUser(userId));
+        theModel.addAttribute("userToUpdate", dataService.getUser(userId));
         return "adminPanel/updateUserForm";
     }
 
@@ -78,9 +70,9 @@ public class AdminSystemController {
                                   BindingResult theBindingResult) {
 
         if(!theBindingResult.hasErrors()) {
-            userService.updateUser(updatedUser);
+            dataService.updateUser(updatedUser);
             theBindingResult.rejectValue("login", "error.login", "Account updated!");
-            theModel.addAttribute("usersData", userService.getUsers(SortUtilsUsers.id_sort));
+            theModel.addAttribute("usersData", dataService.getUsers(SortUtilsUsers.id_sort));
         }
         return "adminPanel/updateUserForm";
     }
@@ -100,13 +92,13 @@ public class AdminSystemController {
 
     @GetMapping("/showCurrencies")
     public String showCurrencies(Model theModel) {
-        theModel.addAttribute("currenciesData", userService.getCurrencies());
+        theModel.addAttribute("currenciesData", dataService.getCurrencies());
         return "adminPanel/currenciesData";
     }
 
     @GetMapping("/showSortedCurrencies")
     public String showSortedCurrencies(Model theModel, @RequestParam(required=false) int sortType) {
-        theModel.addAttribute("currenciesData", userService.getSortedCurrencies(sortType));
+        theModel.addAttribute("currenciesData", dataService.getSortedCurrencies(sortType));
         return "adminPanel/currenciesData";
     }
 
@@ -127,9 +119,9 @@ public class AdminSystemController {
         List<User> theCustomers;
         if (sort != null) {
             int theSortField = Integer.parseInt(sort);
-            theCustomers = userService.getUsers(theSortField);
+            theCustomers = dataService.getUsers(theSortField);
         } else {
-            theCustomers = userService.getUsers(SortUtilsUsers.id_sort);
+            theCustomers = dataService.getUsers(SortUtilsUsers.id_sort);
         }
         return theCustomers;
     }

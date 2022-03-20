@@ -2,6 +2,7 @@ package com.example.cryptocurrencytrackingsystem.Entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Objects;
 
 
 @Entity
@@ -69,5 +70,13 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
     }
 }

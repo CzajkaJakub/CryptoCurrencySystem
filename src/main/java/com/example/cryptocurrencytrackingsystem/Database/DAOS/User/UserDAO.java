@@ -6,9 +6,6 @@ import com.example.cryptocurrencytrackingsystem.Entity.User;
 
 
 public interface UserDAO {
-    //user
     User getUser(String login);
     void saveUser(User user);
-
-
 }

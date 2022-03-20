@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Component("userService")
+@Component("dataService")
 public class DataService implements DataServiceInterface {
 
     private UserDAO userDAO;
@@ -30,9 +30,9 @@ public class DataService implements DataServiceInterface {
     private AdminDAO adminDao;
 
     @Autowired
-    public void setDAOs(@Qualifier("userDaoImpl") UserDaoImpl userDAO,
-                        @Qualifier("adminDaoImpl") AdminDaoImpl adminDAO,
-                        @Qualifier("commonDaoImpl") CommonDaoImpl commonDAO) {
+    public void setDAOs(@Qualifier("userDaoImpl") UserDAO userDAO,
+                        @Qualifier("adminDaoImpl") AdminDAO adminDAO,
+                        @Qualifier("commonDaoImpl") CommonDAO commonDAO) {
         this.userDAO = userDAO;
         this.adminDao = adminDAO;
         this.commonDAO = commonDAO;
@@ -52,8 +52,8 @@ public class DataService implements DataServiceInterface {
 
     @Override
     @Transactional
-    public User getAdminAccount() {
-        return adminDao.getAdminAccount();
+    public User getAdminAccount(User admin) {
+        return adminDao.getAdminAccount(admin);
     }
 
     @Override

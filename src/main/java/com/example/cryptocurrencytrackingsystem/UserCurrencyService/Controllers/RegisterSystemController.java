@@ -20,7 +20,7 @@ public class RegisterSystemController {
     private DataServiceInterface userService;
 
     @Autowired
-    public void setCustomerDAO(@Qualifier("userService") DataServiceInterface userService) {
+    public void setDataServiceDAO(@Qualifier("dataService") DataServiceInterface userService) {
         this.userService = userService;
     }
 

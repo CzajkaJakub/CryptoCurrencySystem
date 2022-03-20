@@ -27,11 +27,7 @@ public class CommonDaoImpl implements CommonDAO{
     public void updateCurrencyInDatabase(List<Currency> currency) {
         Session session = sessionFactory.getCurrentSession();
         for (Currency curr: currency) {
-            try{
-                session.save(currency);
-            } catch (Exception e){
-                session.update(curr);
-            }
+            session.update(curr);
         }
     }
 

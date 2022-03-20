@@ -38,6 +38,7 @@
         <div class="twinkling"></div>
         <div class="clouds"></div>
     </div>
+
     <table class="container">
         <thead>
         <tr>
