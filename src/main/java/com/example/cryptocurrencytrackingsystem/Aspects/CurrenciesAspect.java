@@ -39,7 +39,7 @@ public class CurrenciesAspect {
             List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
             for (Object x: list) {
                 String jsonCurrency = objectMapper.writeValueAsString(x);
-                session.update(objectMapper.readValue(jsonCurrency, Currency.class));
+                session.saveOrUpdate(objectMapper.readValue(jsonCurrency, Currency.class));
             }
         } catch (IOException e) {
             e.printStackTrace();

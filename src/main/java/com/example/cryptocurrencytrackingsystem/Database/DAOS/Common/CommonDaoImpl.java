@@ -60,6 +60,7 @@ public class CommonDaoImpl implements CommonDAO{
 
         String queryString = "from Currency order by " + sortBy;
         Query<Currency> theQuery = currentSession.createQuery(queryString, Currency.class);
+        System.out.println(theQuery.getResultList().size());
         return theQuery.getResultList();
     }
 }

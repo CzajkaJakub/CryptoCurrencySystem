@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,26 +24,25 @@
     </form:form>
 
 
-    <form:form method="get" action="processLoginData" modelAttribute="user">
+    <form:form action="${pageContext.request.contextPath}/authenticateTheUser"
+               method="POST">
+
         <div class="title">Welcome</div>
         <div class="subtitle">Let's login into your account!</div>
         <div class="input-container ic1">
-            <form:errors  path="login" cssClass="loginError" />
-            <form:input  path="login" id="login" cssClass="input" type="text" placeholder="."/>
+
+            <c:if test="${param.error != null}">
+                <i class="loginError">Sorry! You entered invalid username/password.</i>
+            </c:if>
+
+            <input type="text" name="username" placeholder="  " class="input" id="login" />
             <div class="cut cut-short"></div>
             <label for="login" class="placeholder">Login</label>
         </div>
         <div class="input-container ic2">
-            <form:errors path="password" cssClass="loginError" />
-            <form:input path="password" id="password" cssClass="input" type="password" placeholder="." />
+            <input type="password" name="password" placeholder="  " class="input" id="password" />
             <div class="cut"></div>
             <label for="password" class="placeholder">Password</label>
-        </div>
-        <div class="input-container ic2">
-            <form:errors path="email" cssClass="loginError" />
-            <form:input path="email" id="email" cssClass="input" type="text" placeholder="."/>
-            <div class="cut cut-short"></div>
-            <label for="email" class="placeholder">Email</label>
         </div>
         <input type="submit" class="submit" value="Login into account"/>
     </form:form>
