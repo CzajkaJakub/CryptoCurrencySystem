@@ -1,34 +1,58 @@
 package com.example.cryptocurrencytrackingsystem.Entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.util.Objects;
-
+import java.util.Collection;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "username")
+    private String userName;
 
-    @NotBlank(message = "Fill the empty fields!")
-    @Column(name = "login")
-    private String login;
-
-
-    @NotBlank(message = "Fill the empty fields!")
     @Column(name = "password")
     private String password;
 
+    @Column(name = "first_name")
+    private String firstName;
 
-    @NotBlank(message = "Fill the empty fields!")
-    @Email(message = "Wrong email format!")
+    @Column(name = "last_name")
+    private String lastName;
+
     @Column(name = "email")
     private String email;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
+
+    public User() {
+    }
+
+    public User(String userName, String password, String firstName, String lastName, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public User(String userName, String password, String firstName, String lastName, String email,
+                Collection<Role> roles) {
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;
@@ -38,20 +62,36 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin(String firstName) {
-        this.login = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String lastName) {
-        this.password = lastName;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -62,21 +102,18 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
+    public String toString() {
+        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
+                + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
+                + ", roles=" + roles + '}';
     }
 }

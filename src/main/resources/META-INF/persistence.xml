@@ -4,6 +4,12 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.User</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
 
     </persistence-unit>
 </persistence>

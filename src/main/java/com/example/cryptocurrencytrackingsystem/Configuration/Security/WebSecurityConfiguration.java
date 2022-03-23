@@ -1,25 +1,86 @@
-//package com.example.cryptocurrencytrackingsystem.Configuration.Security;
-//
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.core.userdetails.User;
-//
-//@Configuration
-//@EnableWebSecurity
-//public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        User.UserBuilder users = User.withDefaultPasswordEncoder();
-//        auth.inMemoryAuthentication().withUser(users.username("kuba").password("czajka").roles("byczek"));
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().antMatchers("/adminSystem/*").authenticated().and().
-//                formLogin().loginProcessingUrl("/logIntoSystem").permitAll();
-//    }
-//}
+package com.example.cryptocurrencytrackingsystem.Configuration.Security;
+
+
+import com.example.cryptocurrencytrackingsystem.Database.Service.DataServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
+import javax.sql.DataSource;
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalAuthentication
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private final DataSource databaseDataSource;
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+    private final DataServiceInterface dataService;
+
+    @Autowired
+    public WebSecurityConfiguration(@Qualifier("myDataSource") DataSource databaseDataSource,
+                                    @Qualifier("customAuthenticationSuccessHandler") CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler,
+                                    @Qualifier("dataService") DataServiceInterface dataService) {
+
+        this.databaseDataSource = databaseDataSource;
+        this.dataService = dataService;
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+
+
+        http.authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .and()
+                .formLogin()
+                    .loginPage("/user/showLoginForm")
+                    .loginProcessingUrl("/authenticateTheUser")
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .permitAll()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/showAccessDeniedPage")
+                .and()
+
+                .logout()
+                .logoutSuccessUrl("/")  // after logout redirect to landing page (root)
+                .permitAll();
+    }
+
+
+
+
+    @Bean(name = "BCryptPasswordEncoder")
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    //authenticationProvider bean definition
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(dataService); //set the custom user details service
+        auth.setPasswordEncoder(passwordEncoder()); //set the password encoder - bcrypt
+        return auth;
+    }
+}
