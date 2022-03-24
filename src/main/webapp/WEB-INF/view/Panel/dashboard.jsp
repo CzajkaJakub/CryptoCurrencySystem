@@ -10,29 +10,24 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
-
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-
-
 	<title>Crypto Tracker</title>
 </head>
 
 <body>
 
-<div class="background-container">
+<div class="background-container">-
 	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
 	<div class="stars"></div>
 	<div class="twinkling"></div>
 	<div class="clouds"></div>
 </div>
 
-
 <input type="checkbox" id="active">
 <label for="active" class="menu-btn"><i class="fas fa-bars" style="margin-top: 15px"></i></label>
 <div class="wrapper">
 	<ul>
-
-		<li><a href="${pageContext.request.contextPath}/">Dashboard</a></li>
+		<li><a href="${pageContext.request.contextPath}/">Dashboard</a></li><br><br>
 
 		<security:authorize access="not hasAnyRole('USER', 'ADMIN')">
 			<li><a href="${pageContext.request.contextPath}/user/showLoginForm">Login</a></li>
@@ -64,8 +59,6 @@
 			<li><a href="#" onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a></li>
 		</security:authorize>
 
-
-
 		<div id="mediaIcon">
 
 			<a href="https://www.facebook.com/kuba.czajka.376" target="_blank">
@@ -96,37 +89,18 @@
 				</div>
 			</a>
 
-		</div>
+			<a href='https://www.czajkajakub.pl' target="_blank">
+				<div class="icon portfolio">
+					<div class="tooltip">Portfolio</div>
+					<span><i class="fas fa-briefcase"></i></span>
+				</div>
+			</a>
 
+		</div>
 	</ul>
 
-
-
-
 </div>
-<div class="content">
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
 </html>
 
 

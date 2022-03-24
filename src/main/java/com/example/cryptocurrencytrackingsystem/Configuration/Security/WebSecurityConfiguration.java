@@ -59,11 +59,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/showAccessDeniedPage")
+                .accessDeniedPage("/")
                 .and()
-
                 .logout()
-                .logoutSuccessUrl("/")  // after logout redirect to landing page (root)
+                .logoutSuccessUrl("/")
                 .permitAll();
     }
 

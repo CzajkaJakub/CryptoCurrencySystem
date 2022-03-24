@@ -90,3 +90,10 @@
     background-color: #f63e3e;
     color: #ffffff;
 }
+
+.wrapper .portfolio:hover,
+.wrapper .portfolio:hover .tooltip,
+.wrapper .portfolio:hover .tooltip::before {
+    background-color: #ff8f00;
+    color: #ffffff;
+}
