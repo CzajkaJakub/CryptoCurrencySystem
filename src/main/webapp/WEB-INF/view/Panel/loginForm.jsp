@@ -112,10 +112,12 @@
 
 		<!-- Login Form -->
 		<form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST" id="loginForm">
+
 			<div class="user-box">
 				<input type="text" name="username" required="">
 				<label>Username</label>
 			</div>
+
 			<div class="user-box">
 				<input type="password" name="password" required="">
 				<label>Password</label>

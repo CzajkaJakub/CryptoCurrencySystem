@@ -37,7 +37,7 @@ public class HomeControllerService {
         return "Panel/registerForm";
     }
 
-    @GetMapping("/processRegistrationData")
+    @PostMapping("/processRegistrationData")
     public String processForm(Model theModel,
                               @Valid @ModelAttribute("user") CrmUser theUser,
                               BindingResult theBindingResult) {

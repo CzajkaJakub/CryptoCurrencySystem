@@ -1,7 +1,5 @@
 package com.example.cryptocurrencytrackingsystem.Entity.Validation;
 
-import com.example.cryptocurrencytrackingsystem.Entity.Validation.FieldMatch;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,29 +11,29 @@ import javax.validation.constraints.Size;
 
 public class CrmUser {
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String userName;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String password;
-	
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String matchingPassword;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String firstName;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String lastName;
 
 	@Email(message = "Wrong email format!")
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	@NotNull(message = "Fill empty field!")
+	@Size(min = 1, message = "Fill empty field!")
 	private String email;
 
 	public String getUserName() {
