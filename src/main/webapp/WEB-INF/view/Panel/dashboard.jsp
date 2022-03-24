@@ -31,11 +31,40 @@
 <label for="active" class="menu-btn"><i class="fas fa-bars" style="margin-top: 15px"></i></label>
 <div class="wrapper">
 	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
-		<li><a href="#">Gallery</a></li>
-		<li><a href="#">Feedback</a></li>
+
+		<li><a href="${pageContext.request.contextPath}/">Dashboard</a></li>
+
+		<security:authorize access="not hasAnyRole('USER', 'ADMIN')">
+			<li><a href="${pageContext.request.contextPath}/user/showLoginForm">Login</a></li>
+			<li><a href="${pageContext.request.contextPath}/showRegisterForm">Register</a></li>
+		</security:authorize>
+
+		<%--USER SECTION --%>
+		<security:authorize access="hasAnyRole('ADMIN', 'USER')">
+			<li><a href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+		</security:authorize>
+
+
+
+		<%--ADMIN SECTION --%>
+		<security:authorize access="hasRole('ADMIN')">
+			<li><a href="${pageContext.request.contextPath}/admin/showUsersTable">Show users in database</a></li>
+			<li><a href="${pageContext.request.contextPath}/admin/showTableToRemove">Remove an user</a></li>
+		</security:authorize>
+
+
+	<%--LOGOUT BUTTON + DATA ACCOUNT --%>
+		<security:authorize access="hasAnyRole('ADMIN', 'USER')">
+			<form:form id="logoutForm"
+					action="${pageContext.request.contextPath}/logout"
+					   method="POST">
+				<li>User: <security:authentication property="principal.username" /></li>
+				<li>Role: <security:authentication property="principal.authorities" /></li>
+			</form:form>
+			<li><a href="#" onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a></li>
+		</security:authorize>
+
+
 
 		<div id="mediaIcon">
 
@@ -82,59 +111,13 @@
 
 
 
-<security:authorize access="not hasAnyRole('USER', 'ADMIN')">
-	<p><a href="${pageContext.request.contextPath}/user/showLoginForm">Login</a></p>
-	<p><a href="${pageContext.request.contextPath}/showRegisterForm">Create Account</a></p>
-</security:authorize>
 
 
-<%--USER SECTION --%>
-<security:authorize access="hasAnyRole('ADMIN', 'USER')">
-	<hr>
-
-	USER SECTION:
-	<p><a href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></p>
-
-	<hr>
-</security:authorize>
 
 
-<%--ADMIN SECTION --%>
-<security:authorize access="hasRole('ADMIN')">
-
-	<hr>
-	ADMIN SECTION:
-	<p><a href="${pageContext.request.contextPath}/admin/showUsersTable">Show currencies</a></p>
-	<p><a href="${pageContext.request.contextPath}/admin/showTableToRemove">Show table to remove us3er</a></p>
 
 
-	<hr>
 
-</security:authorize>
-
-
-<%--LOGOUT BUTTON + DATA ACCOUNT --%>
-<security:authorize access="hasAnyRole('ADMIN', 'USER')">
-
-	<hr>
-
-	Logged as:
-
-	<p>
-		User: <security:authentication property="principal.username" />
-		<br><br>
-		Role(s): <security:authentication property="principal.authorities" />
-	</p>
-
-
-	<form:form action="${pageContext.request.contextPath}/logout"
-			   method="POST">
-		<input type="submit" value="Logout" />
-	</form:form>
-
-	<hr>
-
-</security:authorize>
 
 
 

@@ -115,10 +115,11 @@
 		</dependency>
 
 <!--		HIBERNATE 					-->
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.6.7.Final</version>
+			<version>5.6.5.Final</version>
 		</dependency>
 
 		<dependency>
@@ -158,8 +159,7 @@
 
 
 
-
-    </dependencies>
+	</dependencies>
 
 	<!-- TO DO: Add support for Maven WAR Plugin -->
 

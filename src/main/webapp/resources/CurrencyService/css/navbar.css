@@ -12,6 +12,7 @@
     clip-path: circle(25px at calc(0% + 45px) 45px);
     background: #000;
     transition: all 0.3s ease-in-out;
+    padding-top: 0;
 }
 #active:checked ~ .wrapper{
     clip-path: circle(75%);
@@ -45,6 +46,8 @@
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 .wrapper ul li{
     margin: 15px 0;
@@ -68,7 +71,7 @@
     width: 104%;
     height: 110%;
     left: -2%;
-    top: -5%; /* if the font is 'Oswald'*/
+    top: -5%;
     border-radius: 50px;
     transform: scaleY(0);
     z-index: -1;
@@ -79,8 +82,11 @@
     transform: scaleY(1);
 }
 .wrapper ul li a:hover{
-    color: #fff;
+    color: #ffffff;
 }
+
+
+
 input[type="checkbox"]{
     display: none;
 }
@@ -113,6 +119,16 @@ input[type="checkbox"]{
 }
 
 #mediaIcon{
-    display: flex;
-    margin-top: 50px;
+    width: 100%;
+    display: inline-flex;
+    align-content: center;
+    padding-top: 50px;
+    justify-content: center;
 }
+
+#logoutForm{
+    color: red;
+    padding-top: 50px;
+    font-family: monospace;
+}
+
