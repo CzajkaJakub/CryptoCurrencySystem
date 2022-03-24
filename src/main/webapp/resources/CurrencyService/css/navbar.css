@@ -1,11 +1,11 @@
 .wrapper{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     clip-path: circle(25px at calc(0% + 45px) 45px);
-    background: #000;
+    background: #000000;
     transition: all 0.3s ease-in-out;
     padding-top: 0;
     z-index: 4;
@@ -26,7 +26,7 @@
     font-size: 20px;
     color: #fff;
     cursor: pointer;
-    background: #000;
+    background: #000000;
     transition: all 0.3s ease-in-out;
 }
 #active:checked ~ .menu-btn{
@@ -82,27 +82,8 @@
 }
 
 
-
 input[type="checkbox"]{
     display: none;
-}
-
-.content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    text-align: center;
-    width: 100%;
-}
-.content .title{
-    font-size: 40px;
-    font-weight: 700;
-}
-.content p{
-    font-size: 35px;
-    font-weight: 600;
 }
 
 @keyframes rotate {
