@@ -26,6 +26,12 @@
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -88,5 +94,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.0" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.8" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.6.5.Final" level="project" />
   </component>
 </module>

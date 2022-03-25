@@ -45,35 +45,35 @@ public class UserDaoImpl implements UserDAO {
 
         switch (theSortField) {
             case SortUtilsCurrencies.symbol_sort:
-                sortBy = "symbol";
+                sortBy = "symbol asc";
                 break;
             case SortUtilsCurrencies.current_price_sort:
-                sortBy = "current_price";
+                sortBy = "current_price dasc";
                 break;
             case SortUtilsCurrencies.market_cap_sort:
-                sortBy = "market_cap";
+                sortBy = "market_cap desc";
                 break;
             case SortUtilsCurrencies.market_cap_rank_sort:
-                sortBy = "market_cap_rank";
+                sortBy = "market_cap_rank asc";
                 break;
             case SortUtilsCurrencies.ath_sort:
-                sortBy = "ath";
+                sortBy = "ath desc";
                 break;
             case SortUtilsCurrencies.atl_sort:
-                sortBy = "atl";
+                sortBy = "atl desc";
                 break;
             case SortUtilsCurrencies.high_24h_sort:
-                sortBy = "high_24h";
+                sortBy = "high_24h desc";
                 break;
             case SortUtilsCurrencies.low_24h_sort:
-                sortBy = "low_24h";
+                sortBy = "low_24h desc";
                 break;
             case SortUtilsCurrencies.name_sort:
-                sortBy = "name";
+                sortBy = "name asc";
                 break;
             default:
-                sortBy = "market_cap_rank";
-                //saveCurrenciesInDatabase();
+                sortBy = "market_cap desc";
+                saveCurrenciesInDatabase();
                 break;
         }
 
@@ -85,7 +85,7 @@ public class UserDaoImpl implements UserDAO {
     public void saveCurrenciesInDatabase(){
         Session session = sessionFactory.getCurrentSession();
         try {
-            URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+            URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false");
             ObjectMapper objectMapper = new ObjectMapper();
             List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
             for (Object x: list) {
@@ -96,6 +96,7 @@ public class UserDaoImpl implements UserDAO {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public User getUser(String login) {

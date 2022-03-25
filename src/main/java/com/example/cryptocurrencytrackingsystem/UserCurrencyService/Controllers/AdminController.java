@@ -30,6 +30,11 @@ public class AdminController {
         return "Admin/usersDataTable";
     }
 
+    @GetMapping("/showTableToRemove")
+    public String showTableToRemove(Model theModel, @RequestParam(required=false) String sort) {
+        theModel.addAttribute("usersData", getSortedList(sort));
+        return "Admin/removeUserTable";
+    }
 
     @GetMapping("/deleteAnAccount")
     public String deleteAnAccount(Model theModel,
@@ -37,12 +42,6 @@ public class AdminController {
 
         dataService.deleteAnAccount(userId);
         theModel.addAttribute("usersData", dataService.getUsers(SortUtilsUsers.id_sort));
-        return "Admin/removeUserTable";
-    }
-
-    @GetMapping("/showTableToRemove")
-    public String showTableToRemove(Model theModel, @RequestParam(required=false) String sort) {
-        theModel.addAttribute("usersData", getSortedList(sort));
         return "Admin/removeUserTable";
     }
 

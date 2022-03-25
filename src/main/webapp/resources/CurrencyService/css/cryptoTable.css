@@ -8,9 +8,10 @@
     z-index: 3;
     text-align: center;
     width: 100%;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 75px;
+    padding-bottom: 75px;
 }
+
 .content .title{
     font-size: 40px;
     font-weight: 700;
@@ -44,6 +45,7 @@
     cursor: default;
     color: #787b86;
     text-decoration: none;
+    padding: 10px;
 }
 
 a{
@@ -77,11 +79,20 @@ h2 a {
 }
 
 
+.container th{
 
-
-.container td, .container th {
-    text-align: center;
 }
+
+.container td{
+    text-align: right;
+    font-size: 12px;
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid;
+    border-color: #00133d;
+    height: 40px;
+}
+
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
@@ -91,8 +102,13 @@ h2 a {
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
     background-color: #2C3446;
-    height: auto;
 }
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd):hover, .container tr:nth-child(even):hover {
+    background-color: #3d3f44;
+}
+
 
 .container th {
     background-color: #131722;
@@ -100,4 +116,25 @@ h2 a {
     height: 56px;
 }
 
-.container td:first-child { color: #FB667A; }
+.container td:first-child {
+    text-align: left;
+    color: #00d9ff; }
+
+.cryptoIcon{
+    width: 28px;
+    height: 28px;
+    position: unset;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 970px){
+    .lowCol, .highCol{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 780px){
+    .athCol, .atlCol{
+        display: none;
+    }
+}
