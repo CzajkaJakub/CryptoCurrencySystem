@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Crypto Tracker</title>
@@ -31,7 +32,7 @@
 <label for="active" class="menu-btn"><i class="fas fa-bars" style="margin-top: 15px"></i></label>
 <div class="wrapper">
     <ul>
-        <li><a href="${pageContext.request.contextPath}/">Dashboard</a></li><br><br>
+        <li><a href="${pageContext.request.contextPath}/">Dashboard</a></li>
 
         <security:authorize access="not hasAnyRole('USER', 'ADMIN')">
             <li><a href="${pageContext.request.contextPath}/user/showLoginForm">Login</a></li>
@@ -40,8 +41,10 @@
 
         <%--USER SECTION --%>
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-            <li><a href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
-        </security:authorize>
+            <li>
+                <span class="loader" id="loader"></span>
+                <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a>
+            </security:authorize>
 
 
 
@@ -153,7 +156,7 @@
                         <c:param name="userId" value="${tempUser.id}"/>
                     </c:url>
 
-                    <a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to delete this user?'))) return false"><i class="fa fa-trash-o" style="font-size:48px;color:grey"></i></a>
+                    <a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to delete this user?'))) return false"><i id="trashIcon" class="fa fa-trash-o"></i></a>
                 </td>
 
             </tr>

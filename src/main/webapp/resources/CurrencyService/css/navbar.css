@@ -4,7 +4,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    clip-path: circle(25px at calc(0% + 45px) 45px);
+    clip-path: circle(10px at calc(0% + 25px) 25px);
     background: #000000;
     transition: all 0.3s ease-in-out;
     padding-top: 0;
@@ -16,8 +16,8 @@
 .menu-btn{
     position: absolute;
     z-index: 5;
-    left: 20px;
-    top: 20px;
+    left: 10px;
+    top: 10px;
     height: 50px;
     width: 50px;
     text-align: center;

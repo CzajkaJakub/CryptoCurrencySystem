@@ -138,3 +138,12 @@ h2 a {
         display: none;
     }
 }
+
+#trashIcon{
+    font-size: 48px;
+     color:grey;
+ }
+
+#trashIcon:hover{
+    color: #700000;
+}
