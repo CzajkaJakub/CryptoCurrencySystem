@@ -137,15 +137,15 @@
 
 
 
-                <th><h1><a href="${sortLinkName}">Name</a></h1></th>
-                <th><h1><a href="${sortLinkSymbol}">Symbol</a></h1></th>
-                <th><h1><a href="${sortLinkMarketCapRank}">Market cap rank</a></h1></th>
-                <th><h1><a href="${sortLinkMarketCap}">Market cap [$]</a></h1></th>
-                <th><h1><a href="${sortLinkCurrentPrice}">Currency price [$]</a></h1></th>
-                <th><h1><a href="${sortLinkAth}">Ath [$]</a></h1></th>
-                <th><h1><a href="${sortLinkAtl}">Atl [$]</a></h1></th>
-                <th><h1><a href="${sortLinkHigh24h}">High 24h [$]</a></h1></th>
-                <th><h1><a href="${sortLinkLow24h}">Low 24h [$]</a></h1></th>
+                <th><a href="${sortLinkName}"><h1>Name</h1></a></th>
+                <th><a href="${sortLinkSymbol}"><h1>Symbol</h1></a></th>
+                <th><a href="${sortLinkMarketCapRank}"><h1>Market cap rank</h1></a></th>
+                <th><a href="${sortLinkMarketCap}"><h1>Market cap [$]</h1></a></th>
+                <th><a href="${sortLinkCurrentPrice}"><h1>Currency price [$]</h1></a></th>
+                <th><a href="${sortLinkAth}"><h1>Ath [$]</h1></a></th>
+                <th><a href="${sortLinkAtl}"><h1>Atl [$]</h1></a></th>
+                <th><a href="${sortLinkHigh24h}"><h1>High 24h [$]</h1></a></th>
+                <th><a href="${sortLinkLow24h}"><h1>Low 24h [$]</h1></a></th>
             </tr>
         </thead>
 
@@ -162,55 +162,16 @@
                 <td>${tempCurrency.high_24h}</td>
                 <td>${tempCurrency.low_24h}</td>
             </tr>
+
             <tr><td colspan="9">
 
-                <!-- TradingView Widget BEGIN -->
                 <div class="tradingview-widget-container">
                     <div id="tradingview_d346a"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://pl.tradingview.com/symbols/AAPL/" rel="noopener" target="_blank"><span class="blue-text">Apple</span></a> od TradingView</div>
+                    <div class="tradingview-widget-copyright"><a href="https://pl.tradingview.com/symbols/AAPL/" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-
-                    <script type="text/javascript">
-                        new TradingView.MediumWidget(
-                            {
-                                "symbols": [
-                                    [
-                                        "Apple",
-                                        "AAPL"
-                                    ],
-                                    [
-                                        "Google",
-                                        "GOOGL"
-                                    ],
-                                    [
-                                        "Microsoft",
-                                        "MSFT"
-                                    ]
-                                ],
-                                "chartOnly": false,
-                                "width": 1000,
-                                "height": 400,
-                                "locale": "pl",
-                                "colorTheme": "dark",
-                                "gridLineColor": "rgba(240, 243, 250, 0)",
-                                "fontColor": "#787B86",
-                                "isTransparent": false,
-                                "autosize": false,
-                                "showVolume": false,
-                                "scalePosition": "no",
-                                "scaleMode": "Normal",
-                                "fontFamily": "-apple-system, BlinkMacSystemFont, Segoe UI, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                "noTimeScale": false,
-                                "valuesTracking": "1",
-                                "chartType": "line",
-                                "container_id": "tradingview_d346a"
-                            }
-                        );
-                    </script>
 
 
                 </div>
-                <!-- TradingView Widget END -->
 
 
             </td> </tr>
@@ -224,6 +185,45 @@
 
 </body>
 </html>
+
+
+<%--<script type="text/javascript">--%>
+<%--    new TradingView.MediumWidget(--%>
+<%--        {--%>
+<%--            "symbols": [--%>
+<%--                [--%>
+<%--                    "Apple",--%>
+<%--                    "AAPL"--%>
+<%--                ],--%>
+<%--                [--%>
+<%--                    "Google",--%>
+<%--                    "GOOGL"--%>
+<%--                ],--%>
+<%--                [--%>
+<%--                    "Microsoft",--%>
+<%--                    "MSFT"--%>
+<%--                ]--%>
+<%--            ],--%>
+<%--            "chartOnly": false,--%>
+<%--            "width": 1000,--%>
+<%--            "height": 400,--%>
+<%--            "locale": "pl",--%>
+<%--            "colorTheme": "dark",--%>
+<%--            "gridLineColor": "rgba(240, 243, 250, 0)",--%>
+<%--            "fontColor": "#787B86",--%>
+<%--            "isTransparent": false,--%>
+<%--            "autosize": false,--%>
+<%--            "showVolume": false,--%>
+<%--            "scalePosition": "no",--%>
+<%--            "scaleMode": "Normal",--%>
+<%--            "fontFamily": "-apple-system, BlinkMacSystemFont, Segoe UI, Trebuchet MS, Roboto, Ubuntu, sans-serif",--%>
+<%--            "noTimeScale": false,--%>
+<%--            "valuesTracking": "1",--%>
+<%--            "chartType": "line",--%>
+<%--            "container_id": "tradingview_d346a"--%>
+<%--        }--%>
+<%--    );--%>
+<%--</script>--%>
 
 
 
