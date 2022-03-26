@@ -15,12 +15,11 @@ public interface DataServiceInterface extends UserDetailsService {
     List<Currency> getSortedCurrencies(int theSortField);
     User getUser(String login);
     void saveUser(CrmUser crmUser);
-    Role findRoleByName(String theRoleName);
     void updateUserAddress(String login, UserAddress userAddress);
 
     //admin
     List<User> getUsers(int theSortField);
     void deleteAnAccount(Integer userId);
-    User getUser(Integer userId);
+
 
 }

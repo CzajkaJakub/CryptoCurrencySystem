@@ -126,6 +126,14 @@
             <div class="user-box">
                 <form:input path="address" required="true"/>
                 <label>Address</label>
+                <form:errors path="address" cssClass="registerError" />
+
+                <c:if test="${serverResponse != null}">
+                    <div class="registrationResponse">
+                            ${serverResponse}
+                    </div>
+                </c:if>
+
             </div>
 
             <a href="#" onclick="document.getElementById('addressForm').submit()">

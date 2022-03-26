@@ -59,11 +59,6 @@ public class DataService implements DataServiceInterface {
         userDAO.saveUser(crmUser);
     }
 
-    @Override
-    @Transactional
-    public Role findRoleByName(String theRoleName) {
-        return roleDAO.findRoleByName(theRoleName);
-    }
 
     @Override
     @Transactional
@@ -104,12 +99,5 @@ public class DataService implements DataServiceInterface {
         adminDAO.deleteAnAccount(userId);
     }
 
-
-
-    @Override
-    @Transactional
-    public User getUser(Integer userId) {
-        return adminDAO.getUser(userId);
-    }
 
 }

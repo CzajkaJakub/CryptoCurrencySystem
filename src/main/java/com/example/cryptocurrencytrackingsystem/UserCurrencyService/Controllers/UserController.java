@@ -2,16 +2,16 @@ package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers
 
 import com.example.cryptocurrencytrackingsystem.Database.Service.DataServiceInterface;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
-import com.example.cryptocurrencytrackingsystem.Entity.User;
 import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -57,12 +57,15 @@ public class UserController {
 
     @PostMapping("/processUpdateUserAddress")
     public String processUpdateUserAddress(Model theModel,
-                                           Principal principal,
-                                           @ModelAttribute("userAdd") UserAddress userAddress){
+                                           @Valid @ModelAttribute("userAdd") UserAddress userAddress,
+                                           BindingResult theBindingResult,
+                                           Principal principal){
 
-        dataService.updateUserAddress(principal.getName(), userAddress);
-        theModel.addAttribute("userAdd", new UserAddress());
+        if (!theBindingResult.hasErrors()) {
+            dataService.updateUserAddress(principal.getName(), userAddress);
+            theModel.addAttribute("serverResponse", "Address added!");
+            theModel.addAttribute("userAdd", new UserAddress());
+        }
         return "User/cryptoForm";
     }
-
 }

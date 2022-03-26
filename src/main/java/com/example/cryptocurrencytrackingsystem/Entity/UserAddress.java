@@ -1,6 +1,9 @@
 package com.example.cryptocurrencytrackingsystem.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "user_address", uniqueConstraints = {
@@ -18,6 +21,8 @@ public class UserAddress {
     private User user;
 
     @Column(name = "address")
+    @Pattern(regexp = "^[0x]+[a-zA-Z0-9]*", message = "Invalid address pattern!")
+    @NotBlank(message = "Fill empty field!")
     private String address;
 
     public String getAddress() {
