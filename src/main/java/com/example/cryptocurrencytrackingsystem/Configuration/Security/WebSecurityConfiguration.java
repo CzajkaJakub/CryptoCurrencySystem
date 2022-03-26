@@ -15,37 +15,30 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalAuthentication
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final DataSource databaseDataSource;
     private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
     private final DataServiceInterface dataService;
 
     @Autowired
-    public WebSecurityConfiguration(@Qualifier("myDataSource") DataSource databaseDataSource,
-                                    @Qualifier("customAuthenticationSuccessHandler") CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler,
+    public WebSecurityConfiguration(@Qualifier("customAuthenticationSuccessHandler") CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler,
                                     @Qualifier("dataService") DataServiceInterface dataService) {
 
-        this.databaseDataSource = databaseDataSource;
         this.dataService = dataService;
         this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-
-
         http.authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/").permitAll()
@@ -75,7 +68,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     //authenticationProvider bean definition
-    @Bean
+    @Bean(name = "daoAuthenticationProvider")
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(dataService); //set the custom user details service

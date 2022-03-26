@@ -1,4 +1,3 @@
-<%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies" %>
 <%@ page import="com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsUsers" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
@@ -43,8 +42,13 @@
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">
             <li>
                 <span class="loader" id="loader"></span>
-                <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a>
+                <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
             </security:authorize>
+
+        <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+            <li>
+                <a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+        </security:authorize>
 
 
 

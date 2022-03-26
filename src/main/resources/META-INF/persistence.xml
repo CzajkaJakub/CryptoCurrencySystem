@@ -10,6 +10,10 @@
         <class>com.example.cryptocurrencytrackingsystem.Entity.User</class>
         <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
         <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.UsersAdres</class>
+        <class>com.example.cryptocurrencytrackingsystem.Configuration.Security.UsersRoleId</class>
+        <class>com.example.cryptocurrencytrackingsystem.Configuration.Security.UsersRole</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.UserAddress</class>
 
     </persistence-unit>
 </persistence>

@@ -2,15 +2,17 @@ package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers
 
 import com.example.cryptocurrencytrackingsystem.Database.Service.DataServiceInterface;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
+import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -47,5 +49,20 @@ public class UserController {
         return currencies;
     }
 
+    @GetMapping("/showCryptoForm")
+    public String showCryptoForm(Model theModel){
+        theModel.addAttribute("userAdd", new UserAddress());
+        return "User/cryptoForm";
+    }
+
+    @PostMapping("/processUpdateUserAddress")
+    public String processUpdateUserAddress(Model theModel,
+                                           Principal principal,
+                                           @ModelAttribute("userAdd") UserAddress userAddress){
+
+        dataService.updateUserAddress(principal.getName(), userAddress);
+        theModel.addAttribute("userAdd", new UserAddress());
+        return "User/cryptoForm";
+    }
 
 }

@@ -7,12 +7,12 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <title>Crypto Tracker</title>
 </head>
@@ -41,8 +41,13 @@
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">
         <li>
             <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a>
+            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
             </security:authorize>
+
+        <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+            <li>
+                <a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+        </security:authorize>
 
 
 
@@ -107,7 +112,7 @@
 </div>
 
 <div class="content">
-    <table class="container">
+    <table class="container" id="myTable">
         <thead>
             <tr>
                 <c:url var="sortLinkName" value="/user/showSortedCurrencies">
@@ -154,7 +159,8 @@
 
         <tbody>
         <c:forEach var="tempCurrency" items="${currenciesData}">
-            <tr>
+
+            <tr onclick="window.open('https://pl.tradingview.com/symbols/${tempCurrency.symbol}USDT/?exchange=GATEIO', '_blank')">
                 <td><img class="cryptoIcon" src="${tempCurrency.image}" alt="${tempCurrency.name}">${tempCurrency.name}</td>
                 <td>${tempCurrency.symbol}</td>
                 <td>${tempCurrency.market_cap_rank}</td>
@@ -164,8 +170,9 @@
                 <td class="atlCol">${tempCurrency.atl}</td>
                 <td class="highCol">${tempCurrency.high_24h}</td>
                 <td class="lowCol">${tempCurrency.low_24h}</td>
-
             </tr>
+
+
 
 
         </c:forEach>
@@ -173,6 +180,10 @@
     </table>
 </div>
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>

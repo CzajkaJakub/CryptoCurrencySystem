@@ -42,20 +42,21 @@
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">
         <li>
             <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
-            </security:authorize>
+            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a>
+            </security:authorize></li>
 
-        <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-            <li>
-                <a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+
+            <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+        <li>
+            <a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
         </security:authorize>
 
 
 
-        <%--ADMIN SECTION --%>
-        <security:authorize access="hasRole('ADMIN')">
-            <li><a href="${pageContext.request.contextPath}/admin/showUsersTable">Show users in database</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/showTableToRemove">Remove an user</a></li>
+            <%--ADMIN SECTION --%>
+            <security:authorize access="hasRole('ADMIN')">
+        <li><a href="${pageContext.request.contextPath}/admin/showUsersTable">Show users in database</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/showTableToRemove">Remove an user</a></li>
         </security:authorize>
 
 
@@ -116,61 +117,23 @@
 
 <div class="content">
     <div class="login-box">
-        <h2>Create new account!</h2>
+        <h2>Add new address!</h2>
 
-        <!-- Registration Form -->
-        <form:form action="${pageContext.request.contextPath}/processRegistrationData"
-                   modelAttribute="user" id="registerForm">
-
-            <div class="user-box">
-                <form:input path="userName" required="true"/>
-                <label>Username</label>
-                <form:errors path="userName" cssClass="registerError" />
-            </div>
+        <!-- Address add Form -->
+        <form:form action="${pageContext.request.contextPath}/user/processUpdateUserAddress"
+                   modelAttribute="userAdd" id="addressForm" method="post">
 
             <div class="user-box">
-                <form:input path="password" required="true" type="password"/>
-                <label>Password</label>
-                <form:errors path="password" cssClass="registerError" />
+                <form:input path="address" required="true"/>
+                <label>Address</label>
             </div>
 
-            <div class="user-box">
-                <form:input path="matchingPassword" required="true" type="password"/>
-                <label>Matching password</label>
-                <form:errors path="matchingPassword" cssClass="registerError" />
-            </div>
-
-            <div class="user-box">
-                <form:input path="firstName" required="true"/>
-                <label>First name</label>
-                <form:errors path="firstName" cssClass="registerError" />
-            </div>
-
-
-            <div class="user-box">
-                <form:input path="lastName" required="."/>
-                <label>Last name</label>
-                <form:errors path="lastName" cssClass="registerError" />
-            </div>
-
-            <div class="user-box">
-                <form:input path="email" required="true"/>
-                <label>Email</label>
-                <form:errors path="email" cssClass="registerError" />
-                <!-- Check for registration error -->
-                <c:if test="${registrationResponse != null}">
-                    <div class="registrationResponse">
-                            ${registrationResponse}
-                    </div>
-                </c:if>
-            </div>
-
-            <a href="#" onclick="document.getElementById('registerForm').submit()">
+            <a href="#" onclick="document.getElementById('addressForm').submit()">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Create an account
+                Add an address
             </a>
 
         </form:form>

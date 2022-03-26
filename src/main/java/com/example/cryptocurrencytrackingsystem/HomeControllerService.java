@@ -59,9 +59,4 @@ public class HomeControllerService {
         }
     }
 
-    @GetMapping("/showAccessDeniedPage")
-    public String showAccessDeniedPage() {
-        return "Panel/accessDeniedPage";
-    }
-
 }

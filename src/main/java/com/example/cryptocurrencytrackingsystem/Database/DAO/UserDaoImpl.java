@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDAO {
                 sortBy = "symbol asc";
                 break;
             case SortUtilsCurrencies.current_price_sort:
-                sortBy = "current_price dasc";
+                sortBy = "current_price desc";
                 break;
             case SortUtilsCurrencies.market_cap_sort:
                 sortBy = "market_cap desc";
@@ -73,9 +73,10 @@ public class UserDaoImpl implements UserDAO {
                 break;
             default:
                 sortBy = "market_cap desc";
-                saveCurrenciesInDatabase();
+                //saveCurrenciesInDatabase();
                 break;
         }
+
 
         String queryString = "from Currency order by " + sortBy;
         Query<Currency> theQuery = currentSession.createQuery(queryString, Currency.class);
@@ -120,6 +121,12 @@ public class UserDaoImpl implements UserDAO {
                 crmUser.getEmail());
 
         user.setRoles(Collections.singletonList(roleDAO.findRoleByName("ROLE_USER")));
+        session.save(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
         session.save(user);
     }
 }

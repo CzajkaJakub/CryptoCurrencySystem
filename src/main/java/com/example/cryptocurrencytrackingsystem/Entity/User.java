@@ -1,7 +1,7 @@
 package com.example.cryptocurrencytrackingsystem.Entity;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -32,6 +32,19 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserAddress> userAdres = new LinkedHashSet<>();
+
+    public Set<UserAddress> getUserAdres() {
+        return userAdres;
+    }
+
+    public void setUserAdres(Set<UserAddress> userAdres) {
+        this.userAdres = userAdres;
+    }
+
 
     public User() {
     }

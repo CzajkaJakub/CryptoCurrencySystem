@@ -7,6 +7,7 @@ import com.example.cryptocurrencytrackingsystem.Database.DAO.UserDAO;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.Role;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,6 +63,16 @@ public class DataService implements DataServiceInterface {
     @Transactional
     public Role findRoleByName(String theRoleName) {
         return roleDAO.findRoleByName(theRoleName);
+    }
+
+    @Override
+    @Transactional
+    public void updateUserAddress(String login, UserAddress userAddress) {
+        User user = userDAO.getUser(login);
+        userAddress.setUser(user);
+        Set<UserAddress> userAddresses = user.getUserAdres();
+        userAddresses.add(userAddress);
+        userDAO.updateUser(user);
     }
 
     @Override

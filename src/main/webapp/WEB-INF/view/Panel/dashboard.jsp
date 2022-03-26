@@ -41,7 +41,13 @@
 		<li>
 			<span class="loader" id="loader"></span>
 			<a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a>
-			</security:authorize>
+		</li>
+		</security:authorize>
+
+		<security:authorize access="hasAnyRole('ADMIN', 'USER')">
+			<li>
+				<a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+		</security:authorize>
 
 
 
