@@ -3,7 +3,6 @@ package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers
 import com.example.cryptocurrencytrackingsystem.Database.Service.DataServiceInterface;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
-import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,6 +34,7 @@ public class UserController {
     @GetMapping("/showSortedCurrencies")
     public String showSortedCurrencies(Model theModel, @RequestParam(required=false) String sortType) {
         theModel.addAttribute("currenciesData", getSortedCurrencies(sortType));
+        theModel.addAttribute("currencySymbol", "");
         return "User/currenciesData";
     }
 
@@ -67,5 +67,13 @@ public class UserController {
             theModel.addAttribute("userAdd", new UserAddress());
         }
         return "User/cryptoForm";
+    }
+
+    @GetMapping("/showTrendingView")
+    public String showTrendingView(Model theModel,
+                                   @RequestParam("currencySymbol") String currencySymbol){
+        theModel.addAttribute("currencySymbol", currencySymbol);
+        return "User/currencyTrendingView";
+
     }
 }

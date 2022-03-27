@@ -73,7 +73,7 @@ public class UserDaoImpl implements UserDAO {
                 break;
             default:
                 sortBy = "market_cap desc";
-                saveCurrenciesInDatabase();
+                //saveCurrenciesInDatabase();
                 break;
         }
 

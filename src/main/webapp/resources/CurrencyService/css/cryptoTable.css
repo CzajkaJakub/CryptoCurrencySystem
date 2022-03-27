@@ -147,3 +147,7 @@ h2 a {
 #trashIcon:hover{
     color: #700000;
 }
+
+.currencyChartDataRow{
+    display: none;
+}

@@ -7,13 +7,15 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script  type="text/javascript" src="${pageContext.request.contextPath}/resources/CurrencyService/js/chart.js"></script>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <title>Crypto Tracker</title>
 </head>
 
@@ -112,7 +114,7 @@
 </div>
 
 <div class="content">
-    <table class="container" id="myTable">
+    <table class="container" id="currencyTable">
         <thead>
             <tr>
                 <c:url var="sortLinkName" value="/user/showSortedCurrencies">
@@ -160,29 +162,32 @@
         <tbody>
         <c:forEach var="tempCurrency" items="${currenciesData}">
 
-            <tr onclick="window.open('https://pl.tradingview.com/symbols/${tempCurrency.symbol}USDT/?exchange=GATEIO', '_blank')">
-                <td><img class="cryptoIcon" src="${tempCurrency.image}" alt="${tempCurrency.name}">${tempCurrency.name}</td>
-                <td>${tempCurrency.symbol}</td>
-                <td>${tempCurrency.market_cap_rank}</td>
-                <td>${tempCurrency.market_cap}</td>
-                <td>${tempCurrency.current_price}</td>
-                <td class="athCol">${tempCurrency.ath}</td>
-                <td class="atlCol">${tempCurrency.atl}</td>
-                <td class="highCol">${tempCurrency.high_24h}</td>
-                <td class="lowCol">${tempCurrency.low_24h}</td>
-            </tr>
+            <c:url var="showTrend" value="/user/showTrendingView">
+                <c:param name="currencySymbol" value="${tempCurrency.symbol}" />
+            </c:url>
 
-
-
-
-        </c:forEach>
+                <tr onclick=" window.open('${showTrend}', '_blank');">
+                    <td>
+                        <img class="cryptoIcon" src="${tempCurrency.image}" alt="${tempCurrency.name}">${tempCurrency.name}
+                    </td>
+                    <td>${tempCurrency.symbol}</td>
+                    <td>${tempCurrency.market_cap_rank}</td>
+                    <td>${tempCurrency.market_cap}</td>
+                    <td>${tempCurrency.current_price}</td>
+                    <td class="athCol">${tempCurrency.ath}</td>
+                    <td class="atlCol">${tempCurrency.atl}</td>
+                    <td class="highCol">${tempCurrency.high_24h}</td>
+                    <td class="lowCol">${tempCurrency.low_24h}</td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>
 
 
 
-
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script  type="text/javascript" src="${pageContext.request.contextPath}/resources/CurrencyService/js/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
