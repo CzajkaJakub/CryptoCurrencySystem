@@ -44,7 +44,7 @@ public class UserController {
             int theSortField = Integer.parseInt(sortType);
             currencies = dataService.getSortedCurrencies(theSortField);
         } else {
-            currencies = dataService.getSortedCurrencies(0);
+            currencies = dataService.getSortedCurrencies();
         }
         return currencies;
     }

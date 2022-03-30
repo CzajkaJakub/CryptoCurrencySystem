@@ -45,6 +45,10 @@ public class DataService implements DataServiceInterface {
 
     @Override
     @Transactional
+    public List<Currency> getSortedCurrencies() {return userDAO.getSortedCurrencies(0);}
+
+    @Override
+    @Transactional
     public User getUser(String login) {
         return userDAO.getUser(login);
     }

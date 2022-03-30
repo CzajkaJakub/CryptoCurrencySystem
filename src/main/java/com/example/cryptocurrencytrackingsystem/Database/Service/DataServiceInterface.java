@@ -12,6 +12,7 @@ import java.util.List;
 public interface DataServiceInterface extends UserDetailsService {
     //user
     List<Currency> getSortedCurrencies(int theSortField);
+    List<Currency> getSortedCurrencies();
     User getUser(String login);
     void saveUser(CrmUser crmUser);
     void updateUserAddress(String login, UserAddress userAddress);
