@@ -134,7 +134,13 @@
                     </div>
                 </c:if>
 
+                <div class="select">
+                    <form:select path="chain" id="format">
+                        <form:options items="${userAdd.chains}" />
+                    </form:select>
+                </div>
             </div>
+
 
             <a href="#" onclick="document.getElementById('addressForm').submit()">
                 <span></span>
