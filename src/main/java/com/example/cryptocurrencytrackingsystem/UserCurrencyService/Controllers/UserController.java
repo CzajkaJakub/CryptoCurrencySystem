@@ -74,6 +74,5 @@ public class UserController {
                                    @RequestParam("currencySymbol") String currencySymbol){
         theModel.addAttribute("currencySymbol", currencySymbol);
         return "User/currencyTrendingView";
-
     }
 }

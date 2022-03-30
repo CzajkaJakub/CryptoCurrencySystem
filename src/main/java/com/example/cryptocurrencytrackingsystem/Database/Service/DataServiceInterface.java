@@ -1,7 +1,6 @@
 package com.example.cryptocurrencytrackingsystem.Database.Service;
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
-import com.example.cryptocurrencytrackingsystem.Entity.Role;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;

@@ -7,5 +7,4 @@ import java.util.List;
 public interface AdminDAO {
     List<User> getUsers(int theSortField);
     void deleteAnAccount(Integer userId);
-    User getUser(Integer userId);
 }

@@ -9,13 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script  type="text/javascript" src="${pageContext.request.contextPath}/resources/CurrencyService/js/chart.js"></script>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
     <title>Crypto Tracker</title>
 </head>
 
@@ -41,14 +40,8 @@
 
         <%--USER SECTION --%>
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-        <li>
-            <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
-            </security:authorize>
-
-        <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-            <li>
-                <a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+            <li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+            <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
         </security:authorize>
 
 
@@ -186,8 +179,6 @@
 
 
 
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-<script  type="text/javascript" src="${pageContext.request.contextPath}/resources/CurrencyService/js/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>

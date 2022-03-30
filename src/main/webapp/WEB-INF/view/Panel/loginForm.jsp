@@ -13,6 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/form.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<link rel="icon" href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
 	<title>Crypto Tracker</title>
 </head>
 
@@ -40,14 +41,8 @@
 
 		<%--USER SECTION --%>
 		<security:authorize access="hasAnyRole('ADMIN', 'USER')">
-		<li>
-			<span class="loader" id="loader"></span>
-			<a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
-			</security:authorize>
-
-		<security:authorize access="hasAnyRole('ADMIN', 'USER')">
-			<li>
-				<a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+			<li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+			<li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
 		</security:authorize>
 
 

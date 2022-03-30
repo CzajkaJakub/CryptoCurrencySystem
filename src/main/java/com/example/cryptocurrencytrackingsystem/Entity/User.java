@@ -34,20 +34,18 @@ public class User {
     private Collection<Role> roles;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserAddress> userAdres = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserAddress> userAddresses = new LinkedHashSet<>();
 
-    public Set<UserAddress> getUserAdres() {
-        return userAdres;
+    public Set<UserAddress> getUserAddresses() {
+        return userAddresses;
     }
 
-    public void setUserAdres(Set<UserAddress> userAdres) {
-        this.userAdres = userAdres;
+    public void setUserAddresses(Set<UserAddress> userAdres) {
+        this.userAddresses = userAdres;
     }
 
-
-    public User() {
-    }
+    public User() {}
 
     public User(String userName, String password, String firstName, String lastName, String email) {
         this.userName = userName;

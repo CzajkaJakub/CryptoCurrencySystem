@@ -174,7 +174,6 @@
 select {
     -webkit-appearance:none;
     -moz-appearance:none;
-    -ms-appearance:none;
     appearance:none;
     outline:0;
     box-shadow:none;

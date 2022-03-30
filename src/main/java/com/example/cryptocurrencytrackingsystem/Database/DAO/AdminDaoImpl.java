@@ -54,11 +54,6 @@ public class AdminDaoImpl implements AdminDAO {
         return theQuery.getResultList();
     }
 
-    @Override
-    public User getUser(Integer userId) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(User.class, userId);
-    }
 
     @Override
     public void deleteAnAccount(Integer userId) {

@@ -2,7 +2,6 @@ package com.example.cryptocurrencytrackingsystem.Database.Service;
 
 
 import com.example.cryptocurrencytrackingsystem.Database.DAO.AdminDAO;
-import com.example.cryptocurrencytrackingsystem.Database.DAO.RoleDAO;
 import com.example.cryptocurrencytrackingsystem.Database.DAO.UserDAO;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.Role;
@@ -29,15 +28,12 @@ import java.util.stream.Collectors;
 public class DataService implements DataServiceInterface {
 
     private UserDAO userDAO;
-    private RoleDAO roleDAO;
     private AdminDAO adminDAO;
 
     @Autowired
     public void setDAOs(@Qualifier("userDaoImpl") UserDAO userDAO,
-                        @Qualifier("roleDaoImpl") RoleDAO roleDAO,
                         @Qualifier("adminDaoImpl") AdminDAO adminDAO) {
         this.userDAO = userDAO;
-        this.roleDAO = roleDAO;
         this.adminDAO = adminDAO;
     }
 
@@ -65,7 +61,7 @@ public class DataService implements DataServiceInterface {
     public void updateUserAddress(String login, UserAddress userAddress) {
         User user = userDAO.getUser(login);
         userAddress.setUser(user);
-        Set<UserAddress> userAddresses = user.getUserAdres();
+        Set<UserAddress> userAddresses = user.getUserAddresses();
         userAddresses.add(userAddress);
         userDAO.updateUser(user);
     }
@@ -86,11 +82,9 @@ public class DataService implements DataServiceInterface {
     }
 
 
-
     @Override
     @Transactional
     public List<User> getUsers(int theSortField) {return adminDAO.getUsers(theSortField);}
-
 
 
     @Override
@@ -98,6 +92,4 @@ public class DataService implements DataServiceInterface {
     public void deleteAnAccount(Integer userId) {
         adminDAO.deleteAnAccount(userId);
     }
-
-
 }
