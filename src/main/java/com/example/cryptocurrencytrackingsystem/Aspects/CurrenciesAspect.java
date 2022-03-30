@@ -33,9 +33,9 @@ public class CurrenciesAspect {
     @Before("updateCurrencies()")
     public void saveCurrenciesInDatabase(){
         Session session = sessionFactory.getCurrentSession();
-        for(int i = 1; i <= 2; i++){
+        for(int i = 1; i <= 1; i++){
             try {
-                URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=" + i +"&sparkline=false");
+                URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=" + i +"&sparkline=false");
                 ObjectMapper objectMapper = new ObjectMapper();
                 List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
                 for (Object x: list) {

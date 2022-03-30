@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Authority</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.User</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.Role</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.UsersAdres</class>
+        <class>com.example.cryptocurrencytrackingsystem.Configuration.Security.UsersRoleId</class>
+        <class>com.example.cryptocurrencytrackingsystem.Configuration.Security.UsersRole</class>
+        <class>com.example.cryptocurrencytrackingsystem.Entity.UserAddress</class>
+
+    </persistence-unit>
+</persistence>

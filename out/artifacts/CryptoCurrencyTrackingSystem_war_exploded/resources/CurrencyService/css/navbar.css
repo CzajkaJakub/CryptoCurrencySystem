@@ -1,0 +1,111 @@
+.wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    clip-path: circle(10px at calc(0% + 25px) 25px);
+    background: #000000;
+    transition: all 0.3s ease-in-out;
+    padding-top: 0;
+    z-index: 4;
+}
+#active:checked ~ .wrapper{
+    clip-path: circle(75%);
+}
+.menu-btn{
+    position: absolute;
+    z-index: 5;
+    left: 10px;
+    top: 10px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    background: #000000;
+    transition: all 0.3s ease-in-out;
+}
+#active:checked ~ .menu-btn{
+    color: #fff;
+}
+#active:checked ~ .menu-btn i:before{
+    content: "\f00d";
+}
+.wrapper ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.wrapper ul li{
+    margin: 15px 0;
+}
+.wrapper ul li a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #fff;
+    border-radius: 50px;
+    background: #000;
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+}
+.wrapper ul li a:after{
+    position: absolute;
+    content: "";
+    background: #fff;
+    width: 104%;
+    height: 110%;
+    left: -2%;
+    top: -5%;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+}
+.wrapper ul li a:hover:after{
+    transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+    color: #ffffff;
+}
+
+
+input[type="checkbox"]{
+    display: none;
+}
+
+@keyframes rotate {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+#mediaIcon{
+    width: 100%;
+    display: inline-flex;
+    align-content: center;
+    padding-top: 50px;
+    justify-content: center;
+}
+
+#logoutForm{
+    color: red;
+    padding-top: 50px;
+    font-family: monospace;
+}
+
