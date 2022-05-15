@@ -24,5 +24,6 @@ hs_err_pid*
 
 /.idea
 /target
+xd.txt
 
 src/main/resources/persistenceDatabase.properties

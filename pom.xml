@@ -107,7 +107,14 @@
 			<version>3.0.3</version>
 		</dependency>
 
-<!--		C3P0   				-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.5</version>
+		</dependency>
+
+
+		<!--		C3P0   				-->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>

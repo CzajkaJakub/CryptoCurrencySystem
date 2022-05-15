@@ -40,11 +40,11 @@
         </security:authorize>
 
         <%--USER SECTION --%>
-        <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-            <li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+        <li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+
+        <security:authorize access="hasAnyRole('USER', 'ADMIN')">
             <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
         </security:authorize>
-
 
 
         <%--ADMIN SECTION --%>
@@ -52,7 +52,6 @@
             <li><a href="${pageContext.request.contextPath}/admin/showUsersTable">Show users in database</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/showTableToRemove">Remove an user</a></li>
         </security:authorize>
-
 
         <%--LOGOUT BUTTON + DATA ACCOUNT --%>
         <security:authorize access="hasAnyRole('ADMIN', 'USER')">

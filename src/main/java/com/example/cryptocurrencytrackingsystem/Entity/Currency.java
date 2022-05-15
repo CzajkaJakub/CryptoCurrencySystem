@@ -11,7 +11,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 @Entity
-@Table(name = "currency")
+@Table(name = "currency", schema = "public")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency {
 

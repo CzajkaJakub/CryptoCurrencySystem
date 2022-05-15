@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 import java.util.LinkedHashMap;
 
 @Entity
-@Table(name = "user_address", uniqueConstraints = {
+@Table(name = "user_address", schema = "public", uniqueConstraints = {
         @UniqueConstraint(name = "user_adres_id_uindex", columnNames = {"id"})
 })
 public class UserAddress {
