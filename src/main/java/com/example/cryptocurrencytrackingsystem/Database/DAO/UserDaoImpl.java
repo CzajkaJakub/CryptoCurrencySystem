@@ -2,6 +2,7 @@ package com.example.cryptocurrencytrackingsystem.Database.DAO;
 
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
+import com.example.cryptocurrencytrackingsystem.Entity.Statistic;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies;
@@ -107,5 +108,17 @@ public class UserDaoImpl implements UserDAO {
     public void updateUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
+    }
+
+    @Override
+    public Statistic getStatistics(String statID) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Statistic.class, statID);
+    }
+
+    @Override
+    public void updateStatistics(Statistic statistic) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(statistic);
     }
 }

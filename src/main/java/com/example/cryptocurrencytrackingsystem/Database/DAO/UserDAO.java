@@ -2,6 +2,7 @@ package com.example.cryptocurrencytrackingsystem.Database.DAO;
 
 
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
+import com.example.cryptocurrencytrackingsystem.Entity.Statistic;
 import com.example.cryptocurrencytrackingsystem.Entity.User;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 
@@ -12,4 +13,7 @@ public interface UserDAO {
     User getUser(String login);
     void saveUser(CrmUser crmUser);
     void updateUser(User user);
+
+    Statistic getStatistics(String statID);
+    void updateStatistics(Statistic statistic);
 }

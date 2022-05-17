@@ -3,10 +3,7 @@ package com.example.cryptocurrencytrackingsystem.Database.Service;
 
 import com.example.cryptocurrencytrackingsystem.Database.DAO.AdminDAO;
 import com.example.cryptocurrencytrackingsystem.Database.DAO.UserDAO;
-import com.example.cryptocurrencytrackingsystem.Entity.Currency;
-import com.example.cryptocurrencytrackingsystem.Entity.Role;
-import com.example.cryptocurrencytrackingsystem.Entity.User;
-import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
+import com.example.cryptocurrencytrackingsystem.Entity.*;
 import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -68,6 +65,18 @@ public class DataService implements DataServiceInterface {
         Set<UserAddress> userAddresses = user.getUserAddresses();
         userAddresses.add(userAddress);
         userDAO.updateUser(user);
+    }
+
+    @Override
+    @Transactional
+    public Statistic getStatistics(String statID) {
+        return userDAO.getStatistics(statID);
+    }
+
+    @Override
+    @Transactional
+    public void updateStatistics(Statistic statistic) {
+        userDAO.updateStatistics(statistic);
     }
 
     @Override
