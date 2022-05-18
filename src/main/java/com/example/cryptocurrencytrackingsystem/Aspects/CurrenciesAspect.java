@@ -1,8 +1,11 @@
 package com.example.cryptocurrencytrackingsystem.Aspects;
 
+import com.example.cryptocurrencytrackingsystem.Database.DAO.UserDaoImpl;
 import com.example.cryptocurrencytrackingsystem.Entity.Currency;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -27,24 +30,25 @@ public class CurrenciesAspect {
         this.sessionFactory = sessionFactory;
     }
 
-    @Pointcut("execution(* com.example.cryptocurrencytrackingsystem.Database.Service.DataService.getSortedCurrencies())")
+    @Pointcut("execution(* com.example.cryptocurrencytrackingsystem.Database.Service.DataService.getSortedCurrencies(..))")
     public void updateCurrencies(){}
 
     @Before("updateCurrencies()")
-    public void saveCurrenciesInDatabase(){
+    public void saveCurrenciesInDatabase(JoinPoint joinPoint){
+        Object[] signatureArgs = joinPoint.getArgs();
+        int pageNumber = ((Integer) signatureArgs[1]) + 1;
         Session session = sessionFactory.getCurrentSession();
-        for(int i = 1; i <= 1; i++){
-            try {
-                URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=" + i +"&sparkline=false");
-                ObjectMapper objectMapper = new ObjectMapper();
-                List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
-                for (Object x: list) {
-                    String jsonCurrency = objectMapper.writeValueAsString(x);
-                    session.saveOrUpdate(objectMapper.readValue(jsonCurrency, Currency.class));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+
+        try {
+            URL url = new URL("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=" + pageNumber +"&sparkline=false");
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<?> list = objectMapper.readValue(url, new TypeReference<List<?>>() {});
+            for (Object x: list) {
+                String jsonCurrency = objectMapper.writeValueAsString(x);
+                session.saveOrUpdate(objectMapper.readValue(jsonCurrency, Currency.class));
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

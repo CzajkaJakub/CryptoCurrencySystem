@@ -40,7 +40,10 @@
         </security:authorize>
 
         <%--USER SECTION --%>
-        <li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+        <li>
+            <span class="loader" id="loader"></span>
+            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
+        </li>
 
         <security:authorize access="hasAnyRole('USER', 'ADMIN')">
             <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>

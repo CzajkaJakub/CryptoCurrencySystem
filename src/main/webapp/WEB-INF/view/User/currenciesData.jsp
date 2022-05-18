@@ -39,7 +39,10 @@
         </security:authorize>
 
         <%--USER SECTION --%>
-        <li><span class="loader" id="loader"></span><a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/user/showSortedCurrencies">Show currencies</a></li>
+        <li>
+            <span class="loader" id="loader"></span>
+            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
+        </li>
 
         <security:authorize access="hasAnyRole('USER', 'ADMIN')">
             <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
@@ -110,34 +113,33 @@
     <table class="container" id="currencyTable">
         <thead>
             <tr>
-                <c:url var="sortLinkName" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkName" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.name_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkSymbol" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkSymbol" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.symbol_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkCurrentPrice" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkCurrentPrice" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.current_price_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkMarketCap" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkMarketCap" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkMarketCapRank" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkMarketCapRank" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_rank_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkAth" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkAth" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.ath_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkAtl" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkAtl" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.atl_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkHigh24h" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkHigh24h" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.high_24h_sort) %>" />
                 </c:url>
-                <c:url var="sortLinkLow24h" value="/user/showSortedCurrencies">
+                <c:url var="sortLinkLow24h" value="/showSortedCurrencies">
                     <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.low_24h_sort) %>" />
                 </c:url>
-
 
 
                 <th><a href="${sortLinkName}"><h1>Name</h1></a></th>
@@ -175,6 +177,22 @@
             </c:forEach>
         </tbody>
     </table>
+
+    <div id="nextPrevButtons">
+
+        <c:url var="nextPage" value="/showSortedCurrencies">
+            <c:param name="pageNumber" value="${pageNumber + 1}" />
+        </c:url>
+        <c:url var="previousPage" value="/showSortedCurrencies">
+            <c:param name="pageNumber" value="${pageNumber - 1}" />
+        </c:url>
+
+        <button onclick="window.open('${previousPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">Previous</button>
+        <span class="loader" id="loader2"></span>
+        <button onclick="window.open('${nextPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">Next</button>
+
+    </div>
+
 </div>
 
 

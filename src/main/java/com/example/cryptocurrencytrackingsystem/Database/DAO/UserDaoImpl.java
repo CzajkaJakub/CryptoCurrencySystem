@@ -37,10 +37,10 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<Currency> getSortedCurrencies(int theSortField) {
+    public List<Currency> getSortedCurrencies(int theSortField, Integer pageNumber) {
         Session currentSession = sessionFactory.getCurrentSession();
-        String sortBy;
 
+        String sortBy;
         switch (theSortField) {
             case SortUtilsCurrencies.symbol_sort:
                 sortBy = "symbol asc";
@@ -73,10 +73,14 @@ public class UserDaoImpl implements UserDAO {
         }
 
 
+
+
         String queryString = "from Currency order by " + sortBy;
         Query<Currency> theQuery = currentSession.createQuery(queryString, Currency.class);
+        theQuery.setFirstResult(50 * pageNumber).setMaxResults(50);
         return theQuery.getResultList();
     }
+
 
 
     @Override

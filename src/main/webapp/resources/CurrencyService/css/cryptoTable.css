@@ -2,6 +2,7 @@
 
 .content{
     display: flex;
+    flex-direction: column;
     top: 50%;
     left: 50%;
     z-index: 3;
@@ -149,4 +150,28 @@ h2 a {
 
 .currencyChartDataRow{
     display: none;
+}
+
+#nextPrevButtons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b2845;
+    margin: 50px;
+    z-index: 1;
+    color: white;
+}
+
+button:hover{
+    background-color: #3d3f44;
 }

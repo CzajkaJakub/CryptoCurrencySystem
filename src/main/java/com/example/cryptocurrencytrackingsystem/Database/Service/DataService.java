@@ -36,13 +36,9 @@ public class DataService implements DataServiceInterface {
 
     @Override
     @Transactional
-    public List<Currency> getSortedCurrencies(int theSortField) {
-        return userDAO.getSortedCurrencies(theSortField);
+    public List<Currency> getSortedCurrencies(int theSortField, Integer pageNumber) {
+        return userDAO.getSortedCurrencies(theSortField, pageNumber);
     }
-
-    @Override
-    @Transactional
-    public List<Currency> getSortedCurrencies() {return userDAO.getSortedCurrencies(0);}
 
     @Override
     @Transactional

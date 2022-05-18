@@ -1,7 +1,6 @@
 package com.example.cryptocurrencytrackingsystem.UserCurrencyService.Controllers;
 
 import com.example.cryptocurrencytrackingsystem.Database.Service.DataServiceInterface;
-import com.example.cryptocurrencytrackingsystem.Entity.Currency;
 import com.example.cryptocurrencytrackingsystem.Entity.UserAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -28,25 +26,6 @@ public class UserController {
     @GetMapping("/showLoginForm")
     public String showDashboard() {
         return "Panel/loginForm";
-    }
-
-
-    @GetMapping("/showSortedCurrencies")
-    public String showSortedCurrencies(Model theModel, @RequestParam(required=false) String sortType) {
-        theModel.addAttribute("currenciesData", getSortedCurrencies(sortType));
-        theModel.addAttribute("currencySymbol", "");
-        return "User/currenciesData";
-    }
-
-    private List<Currency> getSortedCurrencies(String sortType){
-        List<Currency> currencies;
-        if (sortType != null) {
-            int theSortField = Integer.parseInt(sortType);
-            currencies = dataService.getSortedCurrencies(theSortField);
-        } else {
-            currencies = dataService.getSortedCurrencies();
-        }
-        return currencies;
     }
 
     @GetMapping("/showCryptoForm")

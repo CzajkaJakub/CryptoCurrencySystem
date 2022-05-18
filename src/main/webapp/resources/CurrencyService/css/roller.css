@@ -27,6 +27,9 @@
     background-color: #FF3D00;
     transform: scale(0.5) translate(-48px, -48px);
 }
+#loader2{
+    margin: 15px 50px;
+}
 
 @keyframes rotation {
     0% {

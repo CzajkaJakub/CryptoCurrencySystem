@@ -25,20 +25,19 @@ public class StatAspect {
     public void mainPage(){}
 
     @Pointcut("execution(* com.example.cryptocurrencytrackingsystem.HomeControllerService.processForm(..))")
-    public void registerPage(){}
+    public void processRegisterForm(){}
 
 
     @Before("mainPage()")
-    public void showMainPage(){
-        updateStat(dataService.getStatistics("page_entry"));
+    public void showMainPageStatistics(){updateStat("page_entry");}
+
+    @Before("processRegisterForm()")
+    public void registerProcesses(){
+        updateStat("register_number");
     }
 
-    @Before("registerPage()")
-    public void showRegisterForm(){
-        updateStat(dataService.getStatistics("register_number"));
-    }
-
-    public void updateStat(Statistic statistic){
+    public void updateStat(String id){
+        Statistic statistic = dataService.getStatistics(id);
         statistic.setValue(statistic.getValue() + 1);
         dataService.updateStatistics(statistic);
     }

@@ -25,7 +25,7 @@ public class UserAddress {
     @Pattern(regexp = "^[0x]+[a-zA-Z0-9]*", message = "Invalid address pattern!")
     private String address;
 
-    @Column(name = "chainName")
+    @Column(name = "chain_name")
     private String chain;
 
     @Transient
