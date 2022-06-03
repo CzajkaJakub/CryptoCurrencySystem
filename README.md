@@ -25,3 +25,4 @@ Used technologies:
 ![Screenshot_3](https://user-images.githubusercontent.com/81914576/160823814-e07971fd-7bcc-4c78-ba2d-4c9a7946654b.png)
 ![Screenshot_2](https://user-images.githubusercontent.com/81914576/160823815-c57c30f1-123a-46c1-ad10-27c225cd4759.png)
 ![Screenshot_10](https://user-images.githubusercontent.com/81914576/160823817-d764fd5a-e31e-4b9a-b238-d67bed7d99ea.png)
+

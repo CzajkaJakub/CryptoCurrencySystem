@@ -2,6 +2,10 @@ package com.example.cryptocurrencytrackingsystem.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +15,10 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "currency", schema = "public")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency {
@@ -57,62 +65,16 @@ public class Currency {
     private String image;
 
 
-    public Currency() {
-    }
-
-    public Currency(String name, String symbol, float current_price, float market_cap, int market_cap_rank, float ath, float atl, float high_24h, float low_24h, String image) {
-        this.name = name;
-        this.symbol = symbol;
-        this.current_price = current_price;
-        this.market_cap = market_cap;
-        this.market_cap_rank = market_cap_rank;
-        this.ath = ath;
-        this.atl = atl;
-        this.high_24h = high_24h;
-        this.low_24h = low_24h;
-        this.image = image;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
 
     public String getCurrent_price() {
         return NumberFormat.getCurrencyInstance(new Locale("en", "US"))
                 .format(current_price);
     }
 
-    public void setCurrent_price(float current_price) {
-        this.current_price = current_price;
-    }
 
     public String getMarket_cap() {
         return NumberFormat.getCurrencyInstance(new Locale("en", "US"))
                 .format(market_cap);
-    }
-
-    public void setMarket_cap(float market_cap) {
-        this.market_cap = market_cap;
-    }
-
-    public int getMarket_cap_rank() {
-        return market_cap_rank;
-    }
-
-    public void setMarket_cap_rank(int market_cap_rank) {
-        this.market_cap_rank = market_cap_rank;
     }
 
     public String getAth() {
@@ -120,17 +82,9 @@ public class Currency {
                 .format(ath);
     }
 
-    public void setAth(float ath) {
-        this.ath = ath;
-    }
-
     public String getAtl() {
         return NumberFormat.getCurrencyInstance(new Locale("en", "US"))
                 .format(atl);
-    }
-
-    public void setAtl(float atl) {
-        this.atl = atl;
     }
 
     public String getHigh_24h() {
@@ -138,24 +92,8 @@ public class Currency {
                 .format(high_24h);
     }
 
-    public void setHigh_24h(float high_24h) {
-        this.high_24h = high_24h;
-    }
-
     public String getLow_24h() {
         return NumberFormat.getCurrencyInstance(new Locale("en", "US"))
                 .format(low_24h);
-    }
-
-    public void setLow_24h(float low_24h) {
-        this.low_24h = low_24h;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }
