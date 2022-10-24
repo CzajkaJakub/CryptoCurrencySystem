@@ -1,11 +1,8 @@
 package com.example.cryptocurrencytrackingsystem.Database.DAO;
 
+import java.util.Collections;
+import java.util.List;
 
-import com.example.cryptocurrencytrackingsystem.Entity.Currency;
-import com.example.cryptocurrencytrackingsystem.Entity.Statistic;
-import com.example.cryptocurrencytrackingsystem.Entity.User;
-import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
-import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -15,33 +12,39 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-
-import java.util.Collections;
-import java.util.List;
+import com.example.cryptocurrencytrackingsystem.Entity.Currency;
+import com.example.cryptocurrencytrackingsystem.Entity.Statistic;
+import com.example.cryptocurrencytrackingsystem.Entity.User;
+import com.example.cryptocurrencytrackingsystem.Entity.Validation.CrmUser;
+import com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils.SortUtilsCurrencies;
 
 @Repository
-@Component("userDaoImpl")
-public class UserDaoImpl implements UserDAO {
+@Component( "userDaoImpl" )
+public class UserDaoImpl implements UserDAO
+{
 
     private SessionFactory sessionFactory;
     private RoleDAO roleDAO;
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public void setSessionFactoryDao(@Qualifier("sessionFactory")SessionFactory sessionFactory,
-                                     @Qualifier("roleDaoImpl") RoleDAO roleDAO,
-                                     @Qualifier("BCryptPasswordEncoder") BCryptPasswordEncoder passwordEncoder) {
+    public void setSessionFactoryDao( @Qualifier( "sessionFactory" ) SessionFactory sessionFactory,
+        @Qualifier( "roleDaoImpl" ) RoleDAO roleDAO,
+        @Qualifier( "BCryptPasswordEncoder" ) BCryptPasswordEncoder passwordEncoder )
+    {
         this.sessionFactory = sessionFactory;
         this.roleDAO = roleDAO;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public List<Currency> getSortedCurrencies(int theSortField, Integer pageNumber) {
+    public List< Currency > getSortedCurrencies( int theSortField, Integer pageNumber )
+    {
         Session currentSession = sessionFactory.getCurrentSession();
 
         String sortBy;
-        switch (theSortField) {
+        switch( theSortField )
+        {
             case SortUtilsCurrencies.symbol_sort:
                 sortBy = "symbol asc";
                 break;
@@ -72,57 +75,56 @@ public class UserDaoImpl implements UserDAO {
                 break;
         }
 
-
-
-
         String queryString = "from Currency order by " + sortBy;
-        Query<Currency> theQuery = currentSession.createQuery(queryString, Currency.class);
-        theQuery.setFirstResult(50 * pageNumber).setMaxResults(50);
+        Query< Currency > theQuery = currentSession.createQuery( queryString, Currency.class );
+        theQuery.setFirstResult( 50 * pageNumber )
+            .setMaxResults( 50 );
         return theQuery.getResultList();
     }
 
-
-
     @Override
-    public User getUser(String login) {
+    public User getUser( String login )
+    {
         Session session = sessionFactory.getCurrentSession();
-        Query<User> theQuery = session.createQuery("from User where userName = :l", User.class);
-        theQuery.setParameter("l", login);
-        List<User> list = theQuery.getResultList();
-        if (list == null || list.isEmpty()) {
+        Query< User > theQuery = session.createQuery( "from User where userName = :l", User.class );
+        theQuery.setParameter( "l", login );
+        List< User > list = theQuery.getResultList();
+        if( list == null || list.isEmpty() )
+        {
             return null;
         }
-        return list.get(0);
+        return list.get( 0 );
     }
 
     @Override
-    public void saveUser(CrmUser crmUser) {
+    public void saveUser( CrmUser crmUser )
+    {
         Session session = sessionFactory.getCurrentSession();
-        User user = new User(crmUser.getUserName(),
-                passwordEncoder.encode(crmUser.getPassword()),
-                crmUser.getFirstName(),
-                crmUser.getLastName(),
-                crmUser.getEmail());
+        User user = new User( crmUser.getUserName(), passwordEncoder.encode( crmUser.getPassword() ),
+            crmUser.getFirstName(), crmUser.getLastName(), crmUser.getEmail() );
 
-        user.setRoles(Collections.singletonList(roleDAO.findRoleByName("ROLE_USER")));
-        session.save(user);
+        user.setRoles( Collections.singletonList( roleDAO.findRoleByName( "ROLE_USER" ) ) );
+        session.save( user );
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser( User user )
+    {
         Session session = sessionFactory.getCurrentSession();
-        session.save(user);
+        session.save( user );
     }
 
     @Override
-    public Statistic getStatistics(String statID) {
+    public Statistic getStatistics( String statID )
+    {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Statistic.class, statID);
+        return session.get( Statistic.class, statID );
     }
 
     @Override
-    public void updateStatistics(Statistic statistic) {
+    public void updateStatistics( Statistic statistic )
+    {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(statistic);
+        session.saveOrUpdate( statistic );
     }
 }

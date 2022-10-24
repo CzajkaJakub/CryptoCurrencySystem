@@ -1,6 +1,7 @@
 package com.example.cryptocurrencytrackingsystem.UserCurrencyService.SortUtils;
 
-public interface SortUtilsUsers  {
+public interface SortUtilsUsers
+{
     int id_sort = 1;
     int username_sort = 2;
     int first_name_sort = 3;

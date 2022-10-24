@@ -6,15 +6,22 @@
 <html>
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
+    <link rel="icon"
+          href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
     <title>Crypto Tracker</title>
 </head>
 
@@ -41,7 +48,8 @@
         <%--USER SECTION --%>
         <li>
             <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
+            <a onclick="document.getElementById('loader').style.visibility='visible'"
+               href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
         </li>
 
         <security:authorize access="hasAnyRole('USER', 'ADMIN')">
@@ -61,10 +69,12 @@
             <form:form id="logoutForm"
                        action="${pageContext.request.contextPath}/logout"
                        method="POST">
-                <li>User: <security:authentication property="principal.username" /></li>
-                <li>Role: <security:authentication property="principal.authorities" /></li>
+                <li>User: <security:authentication property="principal.username"/></li>
+                <li>Role: <security:authentication property="principal.authorities"/></li>
             </form:form>
-            <li><a href="#" onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a></li>
+            <li><a href="#"
+                   onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a>
+            </li>
         </security:authorize>
 
         <div id="mediaIcon">
@@ -112,92 +122,97 @@
 <div class="content">
     <table class="container" id="currencyTable">
         <thead>
-            <tr>
-                <c:url var="sortLinkName" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.name_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkSymbol" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.symbol_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkCurrentPrice" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.current_price_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkMarketCap" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkMarketCapRank" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_rank_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkAth" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.ath_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkAtl" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.atl_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkHigh24h" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.high_24h_sort) %>" />
-                </c:url>
-                <c:url var="sortLinkLow24h" value="/showSortedCurrencies">
-                    <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.low_24h_sort) %>" />
-                </c:url>
+        <tr>
+            <c:url var="sortLinkName" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.name_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkSymbol" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.symbol_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkCurrentPrice" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.current_price_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkMarketCap" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkMarketCapRank" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.market_cap_rank_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkAth" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.ath_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkAtl" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.atl_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkHigh24h" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.high_24h_sort) %>"/>
+            </c:url>
+            <c:url var="sortLinkLow24h" value="/showSortedCurrencies">
+                <c:param name="sortType" value="<%= Integer.toString(SortUtilsCurrencies.low_24h_sort) %>"/>
+            </c:url>
 
 
-                <th><a href="${sortLinkName}"><h1>Name</h1></a></th>
-                <th><a href="${sortLinkSymbol}"><h1>Symbol</h1></a></th>
-                <th><a href="${sortLinkMarketCapRank}"><h1>Market cap rank</h1></a></th>
-                <th><a href="${sortLinkMarketCap}"><h1>Market cap</h1></a></th>
-                <th><a href="${sortLinkCurrentPrice}"><h1>Currency price</h1></a></th>
-                <th class="athCol"><a href="${sortLinkAth}"><h1>Ath</h1></a></th>
-                <th class="atlCol"><a href="${sortLinkAtl}"><h1>Atl</h1></a></th>
-                <th class="highCol"><a href="${sortLinkHigh24h}"><h1>High 24h</h1></a></th>
-                <th class="lowCol"><a href="${sortLinkLow24h}"><h1>Low 24h</h1></a></th>
-            </tr>
+            <th><a href="${sortLinkName}"><h1>Name</h1></a></th>
+            <th><a href="${sortLinkSymbol}"><h1>Symbol</h1></a></th>
+            <th><a href="${sortLinkMarketCapRank}"><h1>Market cap rank</h1></a></th>
+            <th><a href="${sortLinkMarketCap}"><h1>Market cap</h1></a></th>
+            <th><a href="${sortLinkCurrentPrice}"><h1>Currency price</h1></a></th>
+            <th class="athCol"><a href="${sortLinkAth}"><h1>Ath</h1></a></th>
+            <th class="atlCol"><a href="${sortLinkAtl}"><h1>Atl</h1></a></th>
+            <th class="highCol"><a href="${sortLinkHigh24h}"><h1>High 24h</h1></a></th>
+            <th class="lowCol"><a href="${sortLinkLow24h}"><h1>Low 24h</h1></a></th>
+        </tr>
         </thead>
 
         <tbody>
         <c:forEach var="tempCurrency" items="${currenciesData}">
 
             <c:url var="showTrend" value="/user/showTrendingView">
-                <c:param name="currencySymbol" value="${tempCurrency.symbol}" />
+                <c:param name="currencySymbol" value="${tempCurrency.symbol}"/>
             </c:url>
 
-                <tr onclick=" window.open('${showTrend}', '_blank');">
-                    <td>
-                        <img class="cryptoIcon" src="${tempCurrency.image}" alt="${tempCurrency.name}">${tempCurrency.name}
-                    </td>
-                    <td>${tempCurrency.symbol}</td>
-                    <td>${tempCurrency.market_cap_rank}</td>
-                    <td>${tempCurrency.market_cap}</td>
-                    <td>${tempCurrency.current_price}</td>
-                    <td class="athCol">${tempCurrency.ath}</td>
-                    <td class="atlCol">${tempCurrency.atl}</td>
-                    <td class="highCol">${tempCurrency.high_24h}</td>
-                    <td class="lowCol">${tempCurrency.low_24h}</td>
-                </tr>
-            </c:forEach>
+            <tr onclick=" window.open('${showTrend}', '_blank');">
+                <td>
+                    <img class="cryptoIcon" src="${tempCurrency.image}" alt="${tempCurrency.name}">${tempCurrency.name}
+                </td>
+                <td>${tempCurrency.symbol}</td>
+                <td>${tempCurrency.market_cap_rank}</td>
+                <td>${tempCurrency.market_cap}</td>
+                <td>${tempCurrency.current_price}</td>
+                <td class="athCol">${tempCurrency.ath}</td>
+                <td class="atlCol">${tempCurrency.atl}</td>
+                <td class="highCol">${tempCurrency.high_24h}</td>
+                <td class="lowCol">${tempCurrency.low_24h}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 
     <div id="nextPrevButtons">
 
         <c:url var="nextPage" value="/showSortedCurrencies">
-            <c:param name="pageNumber" value="${pageNumber + 1}" />
+            <c:param name="pageNumber" value="${pageNumber + 1}"/>
         </c:url>
         <c:url var="previousPage" value="/showSortedCurrencies">
-            <c:param name="pageNumber" value="${pageNumber - 1}" />
+            <c:param name="pageNumber" value="${pageNumber - 1}"/>
         </c:url>
 
-        <button onclick="window.open('${previousPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">Previous</button>
+        <button onclick="window.open('${previousPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">
+            Previous
+        </button>
         <span class="loader" id="loader2"></span>
-        <button onclick="window.open('${nextPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">Next</button>
+        <button onclick="window.open('${nextPage}', '_self'); document.getElementById('loader2').style.visibility='visible';">
+            Next
+        </button>
 
     </div>
 
 </div>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

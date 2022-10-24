@@ -5,15 +5,24 @@
 <html>
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/form.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/form.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
+    <link rel="icon"
+          href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
     <title>Crypto Tracker</title>
 </head>
 
@@ -25,7 +34,6 @@
     <div class="twinkling"></div>
     <div class="clouds"></div>
 </div>
-
 
 
 <input type="checkbox" id="active">
@@ -42,11 +50,12 @@
         <%--USER SECTION --%>
         <li>
             <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a><
+            <a onclick="document.getElementById('loader').style.visibility='visible'"
+               href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a><
             /li>
 
-        <security:authorize access="hasAnyRole('USER', 'ADMIN')">
-            <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+            <security:authorize access="hasAnyRole('USER', 'ADMIN')">
+        <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
         </security:authorize>
 
 
@@ -61,12 +70,13 @@
             <form:form id="logoutForm"
                        action="${pageContext.request.contextPath}/logout"
                        method="POST">
-                <li>User: <security:authentication property="principal.username" /></li>
-                <li>Role: <security:authentication property="principal.authorities" /></li>
+                <li>User: <security:authentication property="principal.username"/></li>
+                <li>Role: <security:authentication property="principal.authorities"/></li>
             </form:form>
-            <li><a href="#" onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a></li>
+            <li><a href="#"
+                   onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a>
+            </li>
         </security:authorize>
-
 
 
         <div id="mediaIcon">
@@ -122,38 +132,38 @@
             <div class="user-box">
                 <form:input path="userName" required="true"/>
                 <label>Username</label>
-                <form:errors path="userName" cssClass="registerError" />
+                <form:errors path="userName" cssClass="registerError"/>
             </div>
 
             <div class="user-box">
                 <form:input path="password" required="true" type="password"/>
                 <label>Password</label>
-                <form:errors path="password" cssClass="registerError" />
+                <form:errors path="password" cssClass="registerError"/>
             </div>
 
             <div class="user-box">
                 <form:input path="matchingPassword" required="true" type="password"/>
                 <label>Matching password</label>
-                <form:errors path="matchingPassword" cssClass="registerError" />
+                <form:errors path="matchingPassword" cssClass="registerError"/>
             </div>
 
             <div class="user-box">
                 <form:input path="firstName" required="true"/>
                 <label>First name</label>
-                <form:errors path="firstName" cssClass="registerError" />
+                <form:errors path="firstName" cssClass="registerError"/>
             </div>
 
 
             <div class="user-box">
                 <form:input path="lastName" required="."/>
                 <label>Last name</label>
-                <form:errors path="lastName" cssClass="registerError" />
+                <form:errors path="lastName" cssClass="registerError"/>
             </div>
 
             <div class="user-box">
                 <form:input path="email" required="true"/>
                 <label>Email</label>
-                <form:errors path="email" cssClass="registerError" />
+                <form:errors path="email" cssClass="registerError"/>
                 <!-- Check for registration error -->
                 <c:if test="${registrationResponse != null}">
                     <div class="registrationResponse">

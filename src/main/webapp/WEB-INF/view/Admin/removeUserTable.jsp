@@ -6,16 +6,25 @@
 <html>
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/background.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/navbar.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/mediaIcons.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/cryptoTable.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/CurrencyService/css/roller.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
+    <link rel="icon"
+          href="https://cdn2.iconfinder.com/data/icons/cryptocurrency-vanilla-coins/90/Coin-BTC-Vanilla-3-512.png">
     <title>Crypto Tracker</title>
 </head>
 
@@ -42,11 +51,12 @@
         <%--USER SECTION --%>
         <li>
             <span class="loader" id="loader"></span>
-            <a onclick="document.getElementById('loader').style.visibility='visible'" href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
+            <a onclick="document.getElementById('loader').style.visibility='visible'"
+               href="${pageContext.request.contextPath}/showSortedCurrencies">Show currencies</a>
         </li>
 
         <security:authorize access="hasAnyRole('USER', 'ADMIN')">
-        <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
+            <li><a href="${pageContext.request.contextPath}/user/showCryptoForm">Add your crypto address</a></li>
         </security:authorize>
 
 
@@ -62,10 +72,12 @@
             <form:form id="logoutForm"
                        action="${pageContext.request.contextPath}/logout"
                        method="POST">
-                <li>User: <security:authentication property="principal.username" /></li>
-                <li>Role: <security:authentication property="principal.authorities" /></li>
+                <li>User: <security:authentication property="principal.username"/></li>
+                <li>Role: <security:authentication property="principal.authorities"/></li>
             </form:form>
-            <li><a href="#" onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a></li>
+            <li><a href="#"
+                   onclick="if(confirm('Are you sure you log out?')) document.getElementById('logoutForm').submit()">Logout</a>
+            </li>
         </security:authorize>
 
         <div id="mediaIcon">
@@ -117,19 +129,19 @@
 
 
             <c:url var="sortId" value="/admin/showTableToRemove">
-                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.id_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.id_sort) %>"/>
             </c:url>
             <c:url var="sortUsername" value="/admin/showTableToRemove">
-                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.username_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.username_sort) %>"/>
             </c:url>
             <c:url var="sortFirstName" value="/admin/showTableToRemove">
-                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.first_name_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.first_name_sort) %>"/>
             </c:url>
             <c:url var="sortLastName" value="/admin/showTableToRemove">
-                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.last_name_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.last_name_sort) %>"/>
             </c:url>
             <c:url var="sortEmail" value="/admin/showTableToRemove">
-                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.email_sort) %>" />
+                <c:param name="sort" value="<%= Integer.toString(SortUtilsUsers.email_sort) %>"/>
             </c:url>
 
             <th><a href="${sortId}"><h1>Id</h1></a></th>
@@ -158,7 +170,9 @@
                         <c:param name="userId" value="${tempUser.id}"/>
                     </c:url>
 
-                    <a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to delete this user?'))) return false"><i id="trashIcon" class="fa fa-trash-o"></i></a>
+                    <a href="${deleteLink}"
+                       onclick="if(!(confirm('Are you sure you want to delete this user?'))) return false"><i
+                            id="trashIcon" class="fa fa-trash-o"></i></a>
                 </td>
 
             </tr>

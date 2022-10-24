@@ -2,22 +2,27 @@ package com.example.cryptocurrencytrackingsystem.Configuration.ApplicationConfig
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class
-DispatcherServerInitializer extends AbstractAnnotationConfigDispatcherServletInitializer  {
+public class DispatcherServerInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
+{
 
     @Override
-    protected Class<?>[] getRootConfigClasses() {
+    protected Class< ? >[] getRootConfigClasses()
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    protected Class<?>[] getServletConfigClasses() {
-        return new Class[] { CryptoCurrencyTrackingSystemConfiguration.class };
+    protected Class< ? >[] getServletConfigClasses()
+    {
+        return new Class[]
+        { CryptoCurrencyTrackingSystemConfiguration.class };
     }
 
     @Override
-    protected String[] getServletMappings() {
-        return new String[] { "/" };
+    protected String[] getServletMappings()
+    {
+        return new String[]
+        { "/" };
     }
 }

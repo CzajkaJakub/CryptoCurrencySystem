@@ -1,43 +1,44 @@
 package com.example.cryptocurrencytrackingsystem.Entity.Validation;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Getter;
+import lombok.Setter;
 
-@FieldMatch.List({
-    @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
-})
+@FieldMatch.List(
+{ @FieldMatch( first = "password", second = "matchingPassword", message = "The password fields must match" ) } )
 @Getter
 @Setter
-public class CrmUser {
+public class CrmUser
+{
 
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String userName;
+    private final String fillEmptyFieldMessage = "Fill empty field!";
+    private final String wrongEmailFormatField = "Wrong email format!";
 
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String password;
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String userName;
 
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String matchingPassword;
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String password;
 
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String firstName;
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String matchingPassword;
 
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String lastName;
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String firstName;
 
-	@Email(message = "Wrong email format!")
-	@NotNull(message = "Fill empty field!")
-	@Size(min = 1, message = "Fill empty field!")
-	private String email;
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String lastName;
+
+    @Email( message = wrongEmailFormatField )
+    @NotNull( message = fillEmptyFieldMessage )
+    @Size( min = 1, message = fillEmptyFieldMessage )
+    private String email;
 }
